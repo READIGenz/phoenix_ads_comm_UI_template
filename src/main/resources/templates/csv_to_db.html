@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/styles.css}" href="../static/css/styles.css" />
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style1.css}" href="../static/css/style1.css" />
+    <style>
+        #success-message, #error-message {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            color: #FFFFFF;
+            background-color: none;
+            text-align: center;
+            padding: 25px;
+            font-size: 20px;
+        }
+
+        #loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+            margin-top: 40px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Allow label text to wrap (so all filenames fit inside) */
+        .browse-label {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-width: 400px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div id="header">
+    <img th:src="@{/images/logo.png}" src="../static/images/logo.png" alt="Your Logo">
+</div>
+<div id="content1">
+    <h1>Seamless CSV Integration</h1>
+    <p>Take control of your data. Utilize our Browse and Upload buttons<br>
+        to easily import financial information from CSV to utility database,<br>
+        making data management a breeze.</p>
+</div>
+
+<div class="excel-container">
+    <form action="/upload" method="post" enctype="multipart/form-data" id="upload-form">
+        <div class="button-excel-container">
+            <label for="file-input" class="browse-label">Browse CSV(s)</label>
+            <input type="file" name="file" accept=".csv" id="file-input" class="hidden" multiple>
+            <button type="submit" class="excelbutton">Upload To Database</button>
+        </div>
+    </form>
+</div>
+
+<div id="loader" style="display: none;"></div>
+
+<div th:if="${message}">
+    <div id="success-message">
+        <div class="success-content">
+            <p th:text="${message}"></p>
+        </div>
+    </div>
+</div>
+
+<div th:if="${message}">
+    <div id="error-message">
+        <div class="error-content">
+            <p th:text="${message}"></p>
+        </div>
+    </div>
+</div>
+
+<a th:href="@{/org_data}" id="next-page-link" style="display: none;">
+    <img th:src="@{/images/img.png}" src="../static/images/img.png" alt="Next Page" class="clickable-image">
+</a>
+
+<script>
+    // ✅ Show all selected CSV names in the same label
+    const fileInput = document.getElementById("file-input");
+    const customFileUploadLabel = document.querySelector(".browse-label");
+
+    fileInput.addEventListener("change", function() {
+        if (fileInput.files.length === 0) {
+            customFileUploadLabel.textContent = "Browse CSV(s)";
+            return;
+        }
+
+        // Show all file names (comma separated)
+        const fileNames = Array.from(fileInput.files).map(file => file.name).join(", ");
+        customFileUploadLabel.textContent = fileNames;
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const successMessageDiv = document.getElementById("success-message");
+        const errorMessageDiv = document.getElementById("error-message");
+        const nextPageLink = document.getElementById("next-page-link");
+        const successMessage = successMessageDiv.textContent.trim();
+
+        if (successMessage) {
+            successMessageDiv.style.display = "block";
+            nextPageLink.style.display = "inline";
+        } else {
+            errorMessageDiv.style.display = "block";
+        }
+    });
+
+    const uploadForm = document.getElementById("upload-form");
+    const loader = document.getElementById("loader");
+
+    uploadForm.addEventListener("submit", function(event) {
+        loader.style.display = "block";
+    });
+</script>
+</body>
+</html>

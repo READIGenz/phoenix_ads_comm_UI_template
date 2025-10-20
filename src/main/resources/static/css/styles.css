@@ -1,0 +1,323 @@
+.button-excel-container{
+  position: relative;
+  /* top: 40%;
+  left: 26.5%; */
+  margin-top: 2rem;
+  margin-left: 15rem;
+}
+
+.excelbutton{
+/* display: inline-block; */
+    padding: 15px 30px;
+    background-color: #FFD700; /* Yellow background color */
+    color: #fff; /* White text color */
+    font-family: var(--font-Poppins-serif); /* Use Poppins font */
+    font-weight: bold; /* Bold text */
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 60px; /* This creates a round shape */
+    transition: background-color 0.3s;
+}
+
+/* Style the label for the file input */
+.browse-label {
+    cursor: pointer;
+    color: #808080;
+    background-color: #fff;
+    text-align: center;
+    font-family: var(--font-Poppins-serif);
+    font-weight: bold;
+    padding: 15px 80px;
+    max-height: 6px;
+    margin-right: 80px;
+    border: 3px solid #ccc;
+}
+
+
+.hidden {
+  display: none;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #FFDB58 !important;
+    border-radius: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin-top: 20px;
+    position: absolute;
+    top: 45%;
+    left: 37%;
+}
+
+#copyTableButton {
+    display: inline-block;
+        padding: 15px 30px;
+        background-color: #FFD700; /* Yellow background color */
+        color: #fff; /* White text color */
+        font-family: var(--font-Poppins-serif); /* Use Poppins font */
+        font-weight: bold; /* Bold text */
+        text-decoration: none;
+        font-size: 18px;
+        border-radius: 60px; /* This creates a round shape */
+        transition: background-color 0.3s;
+        position: absolute;
+        top: 75%;
+        left: 21%;
+  }
+
+.button-procedure{
+display: inline-block;
+        padding: 15px 30px;
+        background-color: #FFD700; /* Yellow background color */
+        color: #fff; /* White text color */
+        font-family: var(--font-Poppins-serif); /* Use Poppins font */
+        font-weight: bold; /* Bold text */
+        text-decoration: none;
+        font-size: 15px;
+        border-radius: 60px; /* This creates a round shape */
+        transition: background-color 0.3s;
+        position: relative;
+        top: 63%;
+        left: 21%;
+}
+
+.runJar{
+display: inline-block;
+        padding: 15px 30px;
+        background-color: #FFD700; /* Yellow background color */
+        color: #fff; /* White text color */
+        font-family: var(--font-Poppins-serif); /* Use Poppins font */
+        font-weight: bold; /* Bold text */
+        text-decoration: none;
+        font-size: 15px;
+        border-radius: 70px; /* This creates a round shape */
+        transition: background-color 0.3s;
+        position: relative;
+        top: 10%;
+        left:-3%;
+}
+
+.openPage{
+display: inline-block;
+         padding: 15px 30px;
+         background-color: #FFD700; /* Yellow background color */
+         color: #fff; /* White text color */
+         font-family: var(--font-Poppins-serif); /* Use Poppins font */
+         font-weight: bold; /* Bold text */
+         text-decoration: none;
+         font-size: 15px;
+         border-radius: 60px; /* This creates a round shape */
+         transition: background-color 0.3s;
+         position: relative;
+         top:  10%;
+         left: 5%;
+}
+
+.generateReport{
+          color: #fff; /* White text color */
+          font-family: var(--font-Poppins-serif); /* Use Poppins font */
+          position: relative;
+          top : 93%;
+          left : 43.5%
+}
+
+.ButtonContainer{
+  display: flex;
+  margin-left: 14%;
+}
+.GenerateReportButton{
+    margin-top: 1%;
+    margin-left: 24%;
+}
+
+
+.duplicate{
+display: inline-block;
+    padding: 15px 30px;
+    background-color: #FFD700; /* Yellow background color */
+    color: #fff; /* White text color */
+    font-family: Calibri, sans-serif; /* Use Poppins font */
+    font-weight: bold; /* Bold text */
+    text-decoration: none;
+    font-size: 15px;
+    border-radius: 60px; /* This creates a round shape */
+    transition: background-color 0.3s;
+    position: absolute;
+    top: 20%;
+    left: 60%;
+}
+.error-message {
+    color: white;
+    position: absolute;
+    top: 70%;
+
+}
+
+.success-message{
+   color: white;
+   position: absolute;
+   top: 70%;
+   font-family: Calibri, sans-serif;
+}
+/* styles.css */
+table {
+        width: 100%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        border: 2px solid #000000;
+        table-layout: fixed;
+        font-family: Calibri, sans-serif;
+        background: #E8F2FF;
+}
+
+table, th, td {
+        padding: 10px;
+        text-align: center;
+        border-bottom: 1px solid #000000;
+        border-right: 1px solid #000000;
+        font-family: Calibri, sans-serif;
+}
+
+th {
+    background-color: #1967AD;
+    color: white;
+}
+
+h1, h2 {
+    text-align: center;
+    font-family: Calibri, sans-serif;
+}
+ .last-table{
+            width: 50%;
+            margin: 0 auto; /* This will center the element horizontally */
+ }
+
+ .idCountTable{
+  width: 50%;
+   margin: 0 auto; /* This will center the element horizontally */
+ }
+
+
+ #downloadBtn {
+     padding: 10px 20px; /* Padding to provide space inside the button */
+     background-color:  #595959; /* Button background color */
+     color: #fff; /* Button text color */
+     border: none; /* Remove button border */
+     border-radius: 5px; /* Rounded corners */
+     cursor: pointer; /* Cursor style on hover */
+     font-size: 16px; /* Button text size */
+ }
+
+ #homeBtn {
+    padding: 10px 20px; /* Padding to provide space inside the button */
+    background-color:  #595959; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none; /* Remove button border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor style on hover */
+    font-size: 16px; /* Button text size */
+    position: absolute;
+    top: 1.2%;
+    left: 17%;
+ }
+
+ #goBackLink{
+ font-size: 26px;
+ }
+ #downloadLink{
+ font-size: 26px;
+ }
+
+ #Go-Back-Link {
+      display: inline-block;
+      color: #1967AD;
+    text-decoration: underline;
+      margin-left: 85px; /* Space between buttons */
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      text-align: center;
+  }
+
+  #Download-Link{
+  display: inline-block;
+       color: #1967AD;
+     text-decoration: underline;
+       margin-right: 15px; /* Space between buttons */
+       font-family: Arial, sans-serif;
+       font-size: 16px;
+       text-align: center;
+  }
+
+
+  #Go-Back-Home {
+       display: inline-block;
+       color: white;
+     text-decoration: underline;
+       margin-right: 1200px; /* Space between buttons */
+       font-family: Arial, sans-serif;
+       font-size: 16px;
+   }
+
+ .dqi_button{
+ display: inline-block;
+     padding: 15px 30px;
+              background-color: #FFD700; /* Yellow background color */
+              color: #fff; /* White text color */
+              font-family: var(--font-Poppins-serif); /* Use Poppins font */
+              font-weight: bold; /* Bold text */
+              text-decoration: none;
+              font-size: 15px;
+              border-radius: 60px; /* This creates a round shape */
+              transition: background-color 0.3s;
+              position: relative;
+              top: -10%;
+              left: 92%;
+ }
+.reportbutton{
+display: inline-block;
+   padding: 15px 30px;
+            background-color: #FFD700; /* Yellow background color */
+            color: #fff; /* White text color */
+            font-family: var(--font-Poppins-serif); /* Use Poppins font */
+            font-weight: bold; /* Bold text */
+            text-decoration: none;
+            font-size: 15px;
+            border-radius: 60px; /* This creates a round shape */
+            transition: background-color 0.3s;
+            position: relative;
+            top: 10%;
+            left: 45%;
+}
+.tudf_button{
+display: inline-block;
+   padding: 15px 30px;
+            background-color: #FFD700; /* Yellow background color */
+            color: #fff; /* White text color */
+            font-family: var(--font-Poppins-serif); /* Use Poppins font */
+            font-weight: bold; /* Bold text */
+            text-decoration: none;
+            font-size: 15px;
+            border-radius: 60px; /* This creates a round shape */
+            transition: background-color 0.3s;
+            position: relative;
+            top: -2%;
+            left: 100%;
+}
+.runJarBackup{
+display: inline-block;
+        padding: 15px 30px;
+        background-color: #FFD700; /* Yellow background color */
+        color: #fff; /* White text color */
+        font-family: var(--font-Poppins-serif); /* Use Poppins font */
+        font-weight: bold; /* Bold text */
+        text-decoration: none;
+        font-size: 15px;
+        border-radius: 60px; /* This creates a round shape */
+        transition: background-color 0.3s;
+        position: relative;
+        top: 10%;
+        left:1%;
+}

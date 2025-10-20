@@ -1,0 +1,153 @@
+/* General body styles */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #1967AD;
+    font-family: var(--font-Poppins-serif);
+}
+
+:root {
+    --font-Poppins-serif: 'Poppins', sans-serif;
+}
+
+/* Styles for the heading */
+h1 {
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 35px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    position: relative;
+    top: 50px;
+}
+
+#form-horizontal {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the form horizontally */
+    gap: 10px; /* Adds space between elements */
+}
+
+/* Submit button styles */
+.submit-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #FFD700; /* Yellow background */
+    color: #fff; /* White text color */
+    font-family: Calibri, sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 30px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #E6B800; /* Darker yellow on hover */
+}
+
+/* Error message styles */
+.error {
+    color: red;
+    display: none;
+}
+
+/* Style the file input label */
+.file-label {
+    cursor: pointer;
+    color: #808080;
+    background-color: #fff;
+    text-align: center;
+    font-family: var(--font-Poppins-serif);
+    font-weight: bold;
+    padding: 15px 80px;
+    border: 3px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Input field for file */
+.file-input {
+    display: none; /* Hide the actual file input */
+}
+
+/* Input field for text */
+.text-input {
+    font-size: 16px;
+    color: #808080;
+    background-color: #fff;
+    text-align: center;
+    font-family: var(--font-Poppins-serif);
+    font-weight: bold;
+    padding: 15px 80px;
+    border: 3px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Container for the form and content */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    padding: 20px;
+    transform: translateY(-10%);
+}
+
+/* Style for labels */
+label[for="textInput"] {
+    font-size: 24px;
+    color: #FFFFFF;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.form-horizontal {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the form horizontally */
+    gap: 10px; /* Adds space between elements */
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adds space between elements */
+}
+
+.form-group label, .form-group input, .form-group button {
+    margin: 0; /* Removes default margins */
+}
+
+/* Home button styles */
+#homeBtn {
+    padding: 10px 20px;
+    background-color: #fff;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    border: 3px solid #ccc;
+    position: absolute;
+    top: 5%;
+    left: 17%;
+}
+
+#homeBtn:hover {
+    background-color: #f2f2f2; /* Light gray on hover */
+}
+
+ #Go-Back-Home {
+      display: inline-block;
+      color: white;
+      margin-left:120px;
+      margin-top:20px;
+    text-decoration: underline;
+      margin-right: 1200px; /* Space between buttons */
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+  }

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/reportStyle.css}" href="../static/css/reportStyle.css" />
+</head>
+<body class="Select-Report">
+
+<a href="#" id="Go-Back-Home">Go Back</a>
+<h2>Select Report</h2>
+
+<form id="form4" th:action="@{/borrower_rec}" method="get">
+    <a href="#" id="Download-Report1" onclick="document.getElementById('form4').submit(); return false;">Borrowers Records Analysis</a>
+</form>
+<form id="form7" th:action="@{/rel_guar_rec}" method="get">
+    <a href="#" id="Download-Report2" onclick="document.getElementById('form7').submit(); return false;">Relationships/Guarantors Records Analysis</a>
+</form>
+
+<form id="form5" th:action="@{/credit_rec}" method="get">
+    <a href="#" id="Download-Report3" onclick="document.getElementById('form5').submit(); return false;">Credit Analysis: DPD and Asset Classification Summary</a>
+</form>
+<form id="form6" th:action="@{/financial_rec}" method="get">
+    <a href="#" id="Download-Report4" onclick="document.getElementById('form6').submit(); return false;">Financial Summary Report</a>
+</form>
+
+<script>
+    document.getElementById('Go-Back-Home').addEventListener('click', function() {
+             // Redirect to home page when Home button is clicked
+             window.location.href ="generate_files"; // Replace "home-page.html" with the URL of your home page
+         });
+</script>
+
+</body>
+</html>

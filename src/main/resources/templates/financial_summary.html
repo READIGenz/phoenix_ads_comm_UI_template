@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Fourth Report</title>
+
+    <!-- Ensure that the CSS file path is correct -->
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/reportStyle.css}" href="../static/css/reportStyle.css" />
+</head>
+<body>
+<a href="#" id="Download-Link">Download The Report</a>
+<a href="#" id="Go-Back-Link">Go Back</a>
+
+<h1>Bank Financial Summary Report: Overdue Amounts, Current Balances, and Sanctioned Amounts </h1>
+
+<div>
+    <h2>Current Balance/Sanctioned Amount/Amount Overdue (By unique Account Number)</h2>
+    <table>
+
+        <tr>
+            <th></th>
+            <th th:each="rowData: ${portfolioComm1}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${portfolioComm2}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${portfolioComm3}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${portfolioComm4}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${portfolioComm5}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${portfolioComm6}" th:text="${rowData[0]}"></th>
+        </tr>
+        <tr th:each="accountDetails, iterStat : ${accountDetails}">
+            <th th:text="${accountDetails}"></th>
+
+            <td th:if="${portfolioComm1 != null and #lists.size(portfolioComm1) > 0 and iterStat.index < #lists.size(portfolioComm1[0])}"
+                th:text="${portfolioComm1[0][iterStat.index + 1]}"></td>
+
+            <td th:if="${portfolioComm2 != null and #lists.size(portfolioComm2) > 0 and iterStat.index < #lists.size(portfolioComm2[0])}"
+                th:text="${portfolioComm2[0][iterStat.index + 1]}"></td>
+
+            <td th:if="${portfolioComm3 != null and #lists.size(portfolioComm3) > 0 and iterStat.index < #lists.size(portfolioComm3[0])}"
+                th:text="${portfolioComm3[0][iterStat.index + 1]}"></td>
+
+            <td th:if="${portfolioComm4 != null and #lists.size(portfolioComm4) > 0 and iterStat.index < #lists.size(portfolioComm4[0])}"
+                th:text="${portfolioComm4[0][iterStat.index + 1]}"></td>
+
+            <td th:if="${portfolioComm5 != null and #lists.size(portfolioComm5) > 0 and iterStat.index < #lists.size(portfolioComm5[0])}"
+                th:text="${portfolioComm5[0][iterStat.index + 1]}"></td>
+
+            <td th:if="${portfolioComm6 != null and #lists.size(portfolioComm6) > 0 and iterStat.index < #lists.size(portfolioComm6[0])}"
+                th:text="${portfolioComm6[0][iterStat.index + 1]}"></td>
+        </tr>
+
+    </table>
+</div>
+
+
+<h2>Credit  Type Split- Amount overdue and current balance (based on unique account number)</h2>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>
+                <input type="text" id="filterInput" placeholder="Filter by row name" onkeyup="filterTable()">
+            </th>
+
+            <th>Sub-Category</th>
+            <th th:each="rowData: ${portfolioComm1}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${portfolioComm2}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${portfolioComm3}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${portfolioComm4}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${portfolioComm5}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${portfolioComm6}" th:text="${rowData[0]}"></th>
+        </tr>
+        </tr>
+        </thead>
+
+        <tbody id="tableBody">
+        <!-- Iterate through credit types -->
+        <tr th:each="creditType, creditTypeStat : ${creditTypes}">
+            <th th:text="${creditType}"></th>
+            <td>
+                <!-- Sub-categories table -->
+                <table>
+                    <tr th:each="category : ${subCategories}">
+                        <td th:text="${category}"></td>
+                    </tr>
+                </table>
+            </td>
+            <!-- Data table for each category -->
+            <div th:if="!${#lists.isEmpty(creditTypeSumReport1)}">
+                <td>
+                    <table>
+                        <tr th:each="category, categoryStat : ${subCategories}">
+
+                            <td th:each="rowData : ${creditTypeSumReport1}"
+                                th:text="${rowData[creditTypeStat.index * 3 + categoryStat.index]}"></td>
+                        </tr>
+                    </table>
+
+                </td>
+            </div>
+
+            <div th:if="!${#lists.isEmpty(creditTypeSumReport2)}">
+                <td>
+                    <table>
+                        <tr th:each="category, categoryStat : ${subCategories}">
+
+                            <td th:each="rowData : ${creditTypeSumReport2}"
+                                th:text="${rowData[creditTypeStat.index * 3 + categoryStat.index]}"></td>
+                        </tr>
+                    </table>
+
+                </td>
+            </div>
+
+            <div th:if="!${#lists.isEmpty(creditTypeSumReport3)}">
+                <td>
+                    <table>
+                        <tr th:each="category, categoryStat : ${subCategories}">
+
+                            <td th:each="rowData : ${creditTypeSumReport3}"
+                                th:text="${rowData[creditTypeStat.index * 3 + categoryStat.index]}"></td>
+                        </tr>
+                    </table>
+
+                </td>
+            </div>
+            <div th:if="!${#lists.isEmpty(creditTypeSumReport4)}">
+                <td>
+                    <table>
+                        <tr th:each="category, categoryStat : ${subCategories}">
+
+                            <td th:each="rowData : ${creditTypeSumReport4}"
+                                th:text="${rowData[creditTypeStat.index * 3 + categoryStat.index]}"></td>
+                        </tr>
+                    </table>
+
+                </td>
+            </div>
+
+            <div th:if="!${#lists.isEmpty(creditTypeSumReport5)}">
+                <td>
+                    <table>
+                        <tr th:each="category, categoryStat : ${subCategories}">
+
+                            <td th:each="rowData : ${creditTypeSumReport5}"
+                                th:text="${rowData[creditTypeStat.index * 3 + categoryStat.index]}"></td>
+                        </tr>
+                    </table>
+
+                </td>
+            </div>
+
+            <div th:if="!${#lists.isEmpty(creditTypeSumReport6)}">
+                <td>
+                    <table>
+                        <tr th:each="category, categoryStat : ${subCategories}">
+
+                            <td th:each="rowData : ${creditTypeSumReport6}"
+                                th:text="${rowData[creditTypeStat.index * 3 + categoryStat.index]}"></td>
+                        </tr>
+                    </table>
+
+                </td>
+            </div>
+
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+
+
+<div class = "asset-class">
+    <h2>DPD/asset classification by Current Balance((By unique Account Number)</h2>
+    <table>
+        <!-- New Header Row -->
+        <tr>
+            <th> </th>
+            <th th:each="rowData : ${dpdAsstCurrBal1}"  th:text="${rowData[0]}"></th>
+            <th th:each="rowData : ${dpdAsstCurrBal2}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData : ${dpdAsstCurrBal3}"  th:text="${rowData[0]}"></th>
+            <th th:each="rowData : ${dpdAsstCurrBal4}"  th:text="${rowData[0]}"></th>
+            <th th:each="rowData : ${dpdAsstCurrBal5}"  th:text="${rowData[0]}"></th>
+            <th th:each="rowData : ${dpdAsstCurrBal6}"  th:text="${rowData[0]}"></th>
+        </tr>
+
+        <tr th:each="dpdAsset, iterStat : ${dpdAsset}">
+            <th th:text="${dpdAsset}"></th>
+
+            <td th:if="${dpdAsstCurrBal1 != null and #lists.size(dpdAsstCurrBal1) > 0 and iterStat.index < #lists.size(dpdAsstCurrBal1[0])}"
+                th:text="${dpdAsstCurrBal1[0][iterStat.index + 1]}"></td>
+
+            <td th:if="${dpdAsstCurrBal2 != null and #lists.size(dpdAsstCurrBal2) > 0 and iterStat.index < #lists.size(dpdAsstCurrBal2[0])}"
+                th:text="${dpdAsstCurrBal2[0][iterStat.index + 1]}"></td>
+
+            <td th:if="${dpdAsstCurrBal3 != null and #lists.size(dpdAsstCurrBal3) > 0 and iterStat.index < #lists.size(dpdAsstCurrBal3[0])}"
+                th:text="${dpdAsstCurrBal3[0][iterStat.index + 1]}"></td>
+
+            <td th:if="${dpdAsstCurrBal4 != null and #lists.size(dpdAsstCurrBal4) > 0 and iterStat.index < #lists.size(dpdAsstCurrBal4[0])}"
+                th:text="${dpdAsstCurrBal4[0][iterStat.index + 1]}"></td>
+
+            <td th:if="${dpdAsstCurrBal5 != null and #lists.size(dpdAsstCurrBal5) > 0 and iterStat.index < #lists.size(dpdAsstCurrBal5[0])}"
+                th:text="${dpdAsstCurrBal5[0][iterStat.index + 1]}"></td>
+
+            <td th:if="${dpdAsstCurrBal6 != null and #lists.size(dpdAsstCurrBal6) > 0 and iterStat.index < #lists.size(dpdAsstCurrBal6[0])}"
+                th:text="${dpdAsstCurrBal6[0][iterStat.index + 1]}"></td>
+        </tr>
+    </table>
+</div>
+
+
+<div>
+    <h2>DPD/asset classification by Amount Overdue((By unique Account Number)</h2>
+    <table>
+        <!-- New Header Row -->
+        <tr>
+            <th> </th>
+            <th th:each="rowData : ${dpdAsstAmtOverdue1}"  th:text="${rowData[0]}"></th>
+            <th th:each="rowData : ${dpdAsstAmtOverdue2}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData : ${dpdAsstAmtOverdue3}"  th:text="${rowData[0]}"></th>
+            <th th:each="rowData : ${dpdAsstAmtOverdue4}"  th:text="${rowData[0]}"></th>
+            <th th:each="rowData : ${dpdAsstAmtOverdue5}"  th:text="${rowData[0]}"></th>
+            <th th:each="rowData : ${dpdAsstAmtOverdue6}"  th:text="${rowData[0]}"></th>
+
+        </tr>
+
+        <tr th:each="dpdAsset, iterStat : ${dpdAsset}">
+            <th th:text="${dpdAsset}"></th>
+
+            <td th:if="${dpdAsstAmtOverdue1 != null and #lists.size(dpdAsstAmtOverdue1) > 0 and iterStat.index < #lists.size(dpdAsstAmtOverdue1[0])}"
+                th:text="${dpdAsstAmtOverdue1[0][iterStat.index + 1]}"></td>
+
+            <td th:if="${dpdAsstAmtOverdue2 != null and #lists.size(dpdAsstAmtOverdue2) > 0 and iterStat.index < #lists.size(dpdAsstAmtOverdue2[0])}"
+                th:text="${dpdAsstAmtOverdue2[0][iterStat.index + 1]}"></td>
+
+            <td th:if="${dpdAsstAmtOverdue3 != null and #lists.size(dpdAsstAmtOverdue3) > 0 and iterStat.index < #lists.size(dpdAsstAmtOverdue3[0])}"
+                th:text="${dpdAsstAmtOverdue3[0][iterStat.index + 1]}"></td>
+
+            <td th:if="${dpdAsstAmtOverdue4 != null and #lists.size(dpdAsstAmtOverdue4) > 0 and iterStat.index < #lists.size(dpdAsstAmtOverdue4[0])}"
+                th:text="${dpdAsstAmtOverdue4[0][iterStat.index + 1]}"></td>
+
+            <td th:if="${dpdAsstAmtOverdue5 != null and #lists.size(dpdAsstAmtOverdue5) > 0 and iterStat.index < #lists.size(dpdAsstAmtOverdue5[0])}"
+                th:text="${dpdAsstAmtOverdue5[0][iterStat.index + 1]}"></td>
+
+            <td th:if="${dpdAsstAmtOverdue6 != null and #lists.size(dpdAsstAmtOverdue6) > 0 and iterStat.index < #lists.size(dpdAsstAmtOverdue6[0])}"
+                th:text="${dpdAsstAmtOverdue6[0][iterStat.index + 1]}"></td>
+        </tr>
+    </table>
+</div>
+
+<!-- Include the latest html2canvas library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<!-- Include the latest jsPDF library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+    function filterTable() {
+     var filterText = document.getElementById('filterInput').value.toLowerCase();
+     var tableBody = document.getElementById('tableBody');
+     var tableRows = tableBody.getElementsByTagName('tr');
+     var shouldDisplay = false;
+
+    // Iterate through each row
+    for (var rowIndex = 0; rowIndex < tableRows.length; rowIndex++) {
+        var headerCell = tableRows[rowIndex].getElementsByTagName('th')[0];
+        var dataCells = tableRows[rowIndex].getElementsByTagName('td');
+
+        if (headerCell) {
+            // If the row contains a header cell
+            var headerText = headerCell.textContent || headerCell.innerText;
+            if (headerText.toLowerCase().indexOf(filterText) > -1) {
+                // Show this header row and subsequent rows
+                shouldDisplay = true;
+            } else {
+                // If shouldDisplay is true, keep showing until the next header
+                if (shouldDisplay) {
+                    // Check if the next row is a header row
+                    var nextHeaderCell = tableRows[rowIndex + 1] && tableRows[rowIndex + 1].getElementsByTagName('th')[0];
+                    if (nextHeaderCell) {
+                        shouldDisplay = false;
+                    }
+                }
+            }
+        }
+
+        // Display or hide the row based on shouldDisplay flag
+        tableRows[rowIndex].style.display = shouldDisplay ? 'table-row' : 'none';
+    }
+}
+
+window.onload = function() {
+   // Define constants
+   const DOWNLOAD_BUTTON_ID = 'Download-Link';
+   const GO_BACK_BUTTON_ID = 'Go-Back-Link';
+   const PDF_FORMAT = 'PNG'; // Format used for image in PDF
+   const IMAGE_TYPE = 'image/jpeg'; // MIME type for the image
+   const PDF_IMAGE_QUALITY = 0.6; // Image quality for the PDF
+   const SCREENSHOT_SCALE = 2; // Higher resolution for screenshot
+   const TIMEOUT_DURATION = 1000; // Timeout duration to show button again in milliseconds
+
+   // Event listener for the Download button
+   document.getElementById(DOWNLOAD_BUTTON_ID).addEventListener('click', function() {
+       // Hide the buttons before taking the screenshot
+       document.getElementById(DOWNLOAD_BUTTON_ID).style.visibility = 'hidden';
+       document.getElementById(GO_BACK_BUTTON_ID).style.visibility = 'hidden';
+
+       // Get the current date and time
+       const currentDate = new Date();
+       const day = currentDate.getDate();
+       const month = currentDate.getMonth() + 1;
+       const year = currentDate.getFullYear();
+       const hours = currentDate.getHours();
+       const minutes = currentDate.getMinutes();
+       const seconds = currentDate.getSeconds();
+
+       // Format date and time
+       const formattedDate = `${day}-${month}-${year}`;
+       const formattedTime = `${hours}-${minutes}-${seconds}`;
+
+       // Take a screenshot of the webpage with higher resolution
+       html2canvas(document.body, { scale: SCREENSHOT_SCALE }).then(function(canvas) {
+           // Convert the screenshot to an image data URL
+           const screenshot = canvas.toDataURL(IMAGE_TYPE, PDF_IMAGE_QUALITY);
+
+           // Create a new jsPDF instance
+           const { jsPDF } = window.jspdf;
+           const pdf = new jsPDF('p', 'mm', 'a4');
+
+           // Calculate dimensions
+           const imgWidth = pdf.internal.pageSize.getWidth();
+           const pageHeight = pdf.internal.pageSize.getHeight();
+           const imgHeight = canvas.height * imgWidth / canvas.width;
+           let heightLeft = imgHeight;
+           let position = 0;
+
+           // If the image is higher than the PDF page, break into multiple pages
+           if (heightLeft > pageHeight) {
+               while (heightLeft > 0) {
+                   pdf.addImage(screenshot, PDF_FORMAT, 0, position, imgWidth, imgHeight);
+                   heightLeft -= pageHeight;
+                   position -= pageHeight;
+                   if (heightLeft > 0) {
+                       pdf.addPage();
+                   }
+               }
+           } else {
+               pdf.addImage(screenshot, PDF_FORMAT, 0, 0, imgWidth, imgHeight);
+           }
+
+           // Save the PDF with the filename including date and time
+           pdf.save(`report_${formattedDate}_${formattedTime}.pdf`);
+
+           // Show the buttons again after 1 second
+           setTimeout(function() {
+               document.getElementById(DOWNLOAD_BUTTON_ID).style.visibility = 'visible';
+               document.getElementById(GO_BACK_BUTTON_ID).style.visibility = 'visible';
+           }, TIMEOUT_DURATION);
+       });
+   });
+
+   // Event listener for the Go Back button
+   document.getElementById(GO_BACK_BUTTON_ID).addEventListener('click', function() {
+       // Redirect to home page when Go Back button is clicked
+       window.location.href = "select-report"; // Replace "select-report" with the URL of your home page
+   });
+};
+</script>
+</body>
+</html>

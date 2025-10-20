@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SECOND REPORT</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/reportStyle.css}" href="../static/css/reportStyle.css" />
+</head>
+<body>
+<a href="#" id="Download-Link">Download The Report</a>
+<a href="#" id="Go-Back-Link">Go Back</a>
+<h1>Relationships/Guarantors Records Analysis</h1>
+<table>
+    <h2>Related Type - By count</h2>
+    <thead>
+    <tr>
+
+        <th rowspan="2">Related Type - By count</th>
+    </tr>
+    <tr>
+        <th th:each="rowData: ${secondReportCount1}" th:text="${rowData[0]}"></th>
+        <th th:each="rowData: ${secondReportCount2}" th:text="${rowData[0]}"></th>
+        <th th:each="rowData: ${secondReportCount3}" th:text="${rowData[0]}"></th>
+        <th th:each="rowData: ${secondReportCount4}" th:text="${rowData[0]}"></th>
+        <th th:each="rowData: ${secondReportCount5}" th:text="${rowData[0]}"></th>
+        <th th:each="rowData: ${secondReportCount6}" th:text="${rowData[0]}"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="relatedType, iterStat : ${relatedType}">
+        <th th:text="${relatedType}"></th>
+
+        <td th:if="${secondReportCount1 != null and #lists.size(secondReportCount1) > 0 and iterStat.index + 1 < #lists.size(secondReportCount1[0])}"
+            th:text="${secondReportCount1[0][iterStat.index + 1]}"></td>
+
+        <td th:if="${secondReportCount2 != null and #lists.size(secondReportCount2) > 0 and iterStat.index + 1 < #lists.size(secondReportCount2[0])}"
+            th:text="${secondReportCount2[0][iterStat.index + 1]}"></td>
+
+        <td th:if="${secondReportCount3 != null and #lists.size(secondReportCount3) > 0 and iterStat.index + 1 < #lists.size(secondReportCount3[0])}"
+            th:text="${secondReportCount3[0][iterStat.index + 1]}"></td>
+
+        <td th:if="${secondReportCount4 != null and #lists.size(secondReportCount4) > 0 and iterStat.index + 1 < #lists.size(secondReportCount4[0])}"
+            th:text="${secondReportCount4[0][iterStat.index + 1]}"></td>
+
+        <td th:if="${secondReportCount5 != null and #lists.size(secondReportCount5) > 0 and iterStat.index + 1 < #lists.size(secondReportCount5[0])}"
+            th:text="${secondReportCount5[0][iterStat.index + 1]}"></td>
+
+        <td th:if="${secondReportCount6 != null and #lists.size(secondReportCount6) > 0 and iterStat.index + 1 < #lists.size(secondReportCount6[0])}"
+            th:text="${secondReportCount6[0][iterStat.index + 1]}"></td>
+    </tr>
+
+    </tbody>
+
+    <table>
+        <h2>Relationship - By count</h2>
+        <thead>
+        <tr>
+            <th rowspan="2">Relationship - By count</th>
+        </tr>
+        <tr>
+            <th th:each="rowData: ${secondReportCount1}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${secondReportCount2}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${secondReportCount3}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${secondReportCount4}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${secondReportCount5}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${secondReportCount6}" th:text="${rowData[0]}"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="shareholderTypes, iterStat : ${shareholderTypes}">
+            <th th:text="${shareholderTypes}"></th>
+
+            <td th:if="${secondReportCount1 != null and #lists.size(secondReportCount1) > 0 and iterStat.index + 1 < #lists.size(secondReportCount1[0])}"
+                th:text="${secondReportCount1[0][iterStat.index + 5]}"></td>
+
+            <td th:if="${secondReportCount2 != null and #lists.size(secondReportCount2) > 0 and iterStat.index + 1 < #lists.size(secondReportCount2[0])}"
+                th:text="${secondReportCount2[0][iterStat.index + 5]}"></td>
+
+            <td th:if="${secondReportCount3 != null and #lists.size(secondReportCount3) > 0 and iterStat.index + 1 < #lists.size(secondReportCount3[0])}"
+                th:text="${secondReportCount3[0][iterStat.index + 5]}"></td>
+
+            <td th:if="${secondReportCount4 != null and #lists.size(secondReportCount4) > 0 and iterStat.index + 1 < #lists.size(secondReportCount4[0])}"
+                th:text="${secondReportCount4[0][iterStat.index + 5]}"></td>
+
+            <td th:if="${secondReportCount5 != null and #lists.size(secondReportCount5) > 0 and iterStat.index + 1 < #lists.size(secondReportCount5[0])}"
+                th:text="${secondReportCount5[0][iterStat.index + 5]}"></td>
+
+            <td th:if="${secondReportCount6 != null and #lists.size(secondReportCount6) > 0 and iterStat.index + 1 < #lists.size(secondReportCount6[0])}"
+                th:text="${secondReportCount6[0][iterStat.index + 5]}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <h2>Identity Proof of Relationship - By count</h2>
+        <thead>
+        <tr>
+            <th rowspan="2">Identity Proof of Relationship - By count</th>
+        </tr>
+        <tr>
+            <th th:each="rowData: ${idRelGuarantor1}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${idRelGuarantor2}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${idRelGuarantor3}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${idRelGuarantor4}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${idRelGuarantor5}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${idRelGuarantor6}" th:text="${rowData[0]}"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="documentTypes, iterStat : ${documentTypes}">
+            <th th:text="${documentTypes}"></th>
+
+            <td th:if="${idRelGuarantor1 != null and #lists.size(idRelGuarantor1) > 0 and iterStat.index + 1 < #lists.size(idRelGuarantor1[0])}"
+                th:text="${idRelGuarantor1[0][iterStat.index + 1]}"></td>
+
+            <td th:if="${idRelGuarantor2 != null and #lists.size(idRelGuarantor2) > 0 and iterStat.index + 1 < #lists.size(idRelGuarantor2[0])}"
+                th:text="${idRelGuarantor2[0][iterStat.index + 1]}"></td>
+
+            <td th:if="${idRelGuarantor3 != null and #lists.size(idRelGuarantor3) > 0 and iterStat.index + 1 < #lists.size(idRelGuarantor3[0])}"
+                th:text="${idRelGuarantor3[0][iterStat.index + 1]}"></td>
+
+            <td th:if="${idRelGuarantor4 != null and #lists.size(idRelGuarantor4) > 0 and iterStat.index + 1 < #lists.size(idRelGuarantor4[0])}"
+                th:text="${idRelGuarantor4[0][iterStat.index + 1]}"></td>
+
+            <td th:if="${idRelGuarantor5 != null and #lists.size(idRelGuarantor5) > 0 and iterStat.index + 1 < #lists.size(idRelGuarantor5[0])}"
+                th:text="${idRelGuarantor5[0][iterStat.index + 1]}"></td>
+
+            <td th:if="${idRelGuarantor6 != null and #lists.size(idRelGuarantor6) > 0 and iterStat.index + 1 < #lists.size(idRelGuarantor6[0])}"
+                th:text="${idRelGuarantor6[0][iterStat.index + 1]}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <h2>Business Category of Relationship  - By count</h2>
+    <table>
+        <tr>
+            <th>Business Category</th>
+            <th th:if="${BusiCatBusIndSumReport1 != null and #lists.size(BusiCatBusIndSumReport1) > 0 and #lists.size(BusiCatBusIndSumReport1[0]) > 0}" th:text="${BusiCatBusIndSumReport1[0][0]}">
+            <th th:if="${BusiCatBusIndSumReport2 != null and #lists.size(BusiCatBusIndSumReport2) > 0 and #lists.size(BusiCatBusIndSumReport2[0]) > 0}" th:text="${BusiCatBusIndSumReport2[0][0]}">
+            <th th:if="${BusiCatBusIndSumReport3 != null and #lists.size(BusiCatBusIndSumReport3) > 0 and #lists.size(BusiCatBusIndSumReport3[0]) > 0}" th:text="${BusiCatBusIndSumReport3[0][0]}">
+            <th th:if="${BusiCatBusIndSumReport4 != null and #lists.size(BusiCatBusIndSumReport4) > 0 and #lists.size(BusiCatBusIndSumReport4[0]) > 0}" th:text="${BusiCatBusIndSumReport4[0][0]}">
+            <th th:if="${BusiCatBusIndSumReport5 != null and #lists.size(BusiCatBusIndSumReport5) > 0 and #lists.size(BusiCatBusIndSumReport5[0]) > 0}" th:text="${BusiCatBusIndSumReport5[0][0]}">
+            <th th:if="${BusiCatBusIndSumReport6 != null and #lists.size(BusiCatBusIndSumReport6) > 0 and #lists.size(BusiCatBusIndSumReport6[0]) > 0}" th:text="${BusiCatBusIndSumReport6[0][0]}">
+        </tr>
+
+        <tr th:each="businessCategories, iterStat : ${businessCategories}">
+            <th th:text="${businessCategories}"></th>
+
+            <td th:if="${BusiCatBusIndSumReport1 != null and #lists.size(BusiCatBusIndSumReport1) > 0 and iterStat.index + 1 < #lists.size(BusiCatBusIndSumReport1[0])}"
+                th:text="${BusiCatBusIndSumReport1[0][iterStat.index + 1]}"></td>
+
+            <td th:if="${BusiCatBusIndSumReport2 != null and #lists.size(BusiCatBusIndSumReport2) > 0 and iterStat.index + 1 < #lists.size(BusiCatBusIndSumReport2[0])}"
+                th:text="${BusiCatBusIndSumReport2[0][iterStat.index + 1]}"></td>
+
+            <td th:if="${BusiCatBusIndSumReport3 != null and #lists.size(BusiCatBusIndSumReport3) > 0 and iterStat.index + 1 < #lists.size(BusiCatBusIndSumReport3[0])}"
+                th:text="${BusiCatBusIndSumReport3[0][iterStat.index + 1]}"></td>
+
+            <td th:if="${BusiCatBusIndSumReport4 != null and #lists.size(BusiCatBusIndSumReport4) > 0 and iterStat.index + 1 < #lists.size(BusiCatBusIndSumReport4[0])}"
+                th:text="${BusiCatBusIndSumReport4[0][iterStat.index + 1]}"></td>
+
+            <td th:if="${BusiCatBusIndSumReport5 != null and #lists.size(BusiCatBusIndSumReport5) > 0 and iterStat.index + 1 < #lists.size(BusiCatBusIndSumReport5[0])}"
+                th:text="${BusiCatBusIndSumReport5[0][iterStat.index + 1]}"></td>
+
+            <td th:if="${BusiCatBusIndSumReport6 != null and #lists.size(BusiCatBusIndSumReport6) > 0 and iterStat.index + 1 < #lists.size(BusiCatBusIndSumReport6[0])}"
+                th:text="${BusiCatBusIndSumReport6[0][iterStat.index + 1]}"></td>
+        </tr>
+
+    </table>
+
+    <h2>Business / Industry Type of Relationship</h2>
+    <table>
+        <tr>
+            <th>Business / Industry Type</th>
+            <th th:if="${BusiCatBusIndSumReport1 != null and #lists.size(BusiCatBusIndSumReport1) > 0 and #lists.size(BusiCatBusIndSumReport1[0]) > 0}" th:text="${BusiCatBusIndSumReport1[0][0]}">
+            <th th:if="${BusiCatBusIndSumReport2 != null and #lists.size(BusiCatBusIndSumReport2) > 0 and #lists.size(BusiCatBusIndSumReport2[0]) > 0}" th:text="${BusiCatBusIndSumReport2[0][0]}">
+            <th th:if="${BusiCatBusIndSumReport3 != null and #lists.size(BusiCatBusIndSumReport3) > 0 and #lists.size(BusiCatBusIndSumReport3[0]) > 0}" th:text="${BusiCatBusIndSumReport3[0][0]}">
+            <th th:if="${BusiCatBusIndSumReport4 != null and #lists.size(BusiCatBusIndSumReport4) > 0 and #lists.size(BusiCatBusIndSumReport4[0]) > 0}" th:text="${BusiCatBusIndSumReport4[0][0]}">
+            <th th:if="${BusiCatBusIndSumReport5 != null and #lists.size(BusiCatBusIndSumReport5) > 0 and #lists.size(BusiCatBusIndSumReport5[0]) > 0}" th:text="${BusiCatBusIndSumReport5[0][0]}">
+            <th th:if="${BusiCatBusIndSumReport6 != null and #lists.size(BusiCatBusIndSumReport6) > 0 and #lists.size(BusiCatBusIndSumReport6[0]) > 0}" th:text="${BusiCatBusIndSumReport6[0][0]}">
+        </tr>
+
+        <tr th:each="businessTypes, iterStat : ${businessTypes}">
+            <th th:text="${businessTypes}"></th>
+
+            <td th:if="${BusiCatBusIndSumReport1 != null and #lists.size(BusiCatBusIndSumReport1) > 0 and iterStat.index + 1 < #lists.size(BusiCatBusIndSumReport1[0])}"
+                th:text="${BusiCatBusIndSumReport1[0][iterStat.index + 8]}"></td>
+
+            <td th:if="${BusiCatBusIndSumReport2 != null and #lists.size(BusiCatBusIndSumReport2) > 0 and iterStat.index + 1 < #lists.size(BusiCatBusIndSumReport2[0])}"
+                th:text="${BusiCatBusIndSumReport2[0][iterStat.index + 8]}"></td>
+
+            <td th:if="${BusiCatBusIndSumReport3 != null and #lists.size(BusiCatBusIndSumReport3) > 0 and iterStat.index + 1 < #lists.size(BusiCatBusIndSumReport3[0])}"
+                th:text="${BusiCatBusIndSumReport3[0][iterStat.index + 8]}"></td>
+
+            <td th:if="${BusiCatBusIndSumReport4 != null and #lists.size(BusiCatBusIndSumReport4) > 0 and iterStat.index + 1 < #lists.size(BusiCatBusIndSumReport4[0])}"
+                th:text="${BusiCatBusIndSumReport4[0][iterStat.index + 8]}"></td>
+
+            <td th:if="${BusiCatBusIndSumReport5 != null and #lists.size(BusiCatBusIndSumReport5) > 0 and iterStat.index + 1 < #lists.size(BusiCatBusIndSumReport5[0])}"
+                th:text="${BusiCatBusIndSumReport5[0][iterStat.index + 8]}"></td>
+
+            <td th:if="${BusiCatBusIndSumReport6 != null and #lists.size(BusiCatBusIndSumReport6) > 0 and iterStat.index + 1 < #lists.size(BusiCatBusIndSumReport6[0])}"
+                th:text="${BusiCatBusIndSumReport6[0][iterStat.index + 8]}"></td>
+        </tr>
+
+    </table>
+    <table>
+        <h2>Guarantor Type  - By count</h2>
+        <thead>
+        <tr>
+            <th rowspan="2">Guarantor Type</th>
+        </tr>
+        <tr>
+            <th th:each="rowData: ${secondReportCount1}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${secondReportCount2}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${secondReportCount3}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${secondReportCount4}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${secondReportCount5}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${secondReportCount6}" th:text="${rowData[0]}"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="relatedType, iterStat : ${relatedType}">
+            <th th:text="${relatedType}"></th>
+
+            <td th:if="${secondReportCount1 != null and #lists.size(secondReportCount1) > 0 and iterStat.index + 1 < #lists.size(secondReportCount1[0])}"
+                th:text="${secondReportCount1[0][iterStat.index + 19]}"></td>
+
+            <td th:if="${secondReportCount2 != null and #lists.size(secondReportCount2) > 0 and iterStat.index + 1 < #lists.size(secondReportCount2[0])}"
+                th:text="${secondReportCount2[0][iterStat.index + 19]}"></td>
+
+            <td th:if="${secondReportCount3 != null and #lists.size(secondReportCount3) > 0 and iterStat.index + 1 < #lists.size(secondReportCount3[0])}"
+                th:text="${secondReportCount3[0][iterStat.index + 19]}"></td>
+
+            <td th:if="${secondReportCount4 != null and #lists.size(secondReportCount4) > 0 and iterStat.index + 1 < #lists.size(secondReportCount4[0])}"
+                th:text="${secondReportCount4[0][iterStat.index + 19]}"></td>
+
+            <td th:if="${secondReportCount5 != null and #lists.size(secondReportCount5) > 0 and iterStat.index + 1 < #lists.size(secondReportCount5[0])}"
+                th:text="${secondReportCount5[0][iterStat.index + 19]}"></td>
+
+            <td th:if="${secondReportCount6 != null and #lists.size(secondReportCount6) > 0 and iterStat.index + 1 < #lists.size(secondReportCount6[0])}"
+                th:text="${secondReportCount6[0][iterStat.index + 19]}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <table>
+        <h2>Identity Proof of Guarantor  - By count</h2>
+        <thead>
+        <tr>
+            <th rowspan="2">Identity Proof of Guarantor</th>
+        </tr>
+        <tr>
+            <th th:each="rowData: ${idRelGuarantor1}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${idRelGuarantor2}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${idRelGuarantor3}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${idRelGuarantor4}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${idRelGuarantor5}" th:text="${rowData[0]}"></th>
+            <th th:each="rowData: ${idRelGuarantor6}" th:text="${rowData[0]}"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="documentTypes, iterStat : ${documentTypes}">
+            <th th:text="${documentTypes}"></th>
+
+            <td th:if="${idRelGuarantor1 != null and #lists.size(idRelGuarantor1) > 0 and iterStat.index + 1 < #lists.size(idRelGuarantor1[0])}"
+                th:text="${idRelGuarantor1[0][iterStat.index + 12]}"></td>
+
+            <td th:if="${idRelGuarantor2 != null and #lists.size(idRelGuarantor2) > 0 and iterStat.index + 1 < #lists.size(idRelGuarantor2[0])}"
+                th:text="${idRelGuarantor2[0][iterStat.index + 12]}"></td>
+
+            <td th:if="${idRelGuarantor3 != null and #lists.size(idRelGuarantor3) > 0 and iterStat.index + 1 < #lists.size(idRelGuarantor3[0])}"
+                th:text="${idRelGuarantor3[0][iterStat.index + 12]}"></td>
+
+            <td th:if="${idRelGuarantor4 != null and #lists.size(idRelGuarantor4) > 0 and iterStat.index + 1 < #lists.size(idRelGuarantor4[0])}"
+                th:text="${idRelGuarantor4[0][iterStat.index + 12]}"></td>
+
+            <td th:if="${idRelGuarantor5 != null and #lists.size(idRelGuarantor5) > 0 and iterStat.index + 1 < #lists.size(idRelGuarantor5[0])}"
+                th:text="${idRelGuarantor5[0][iterStat.index + 12]}"></td>
+
+            <td th:if="${idRelGuarantor6 != null and #lists.size(idRelGuarantor6) > 0 and iterStat.index + 1 < #lists.size(idRelGuarantor6[0])}"
+                th:text="${idRelGuarantor6[0][iterStat.index + 12]}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+</table>
+
+
+
+<!-- Include the latest html2canvas library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<!-- Include the latest jsPDF library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+    function filterTable() {
+     var filterText = document.getElementById('filterInput').value.toLowerCase();
+     var tableBody = document.getElementById('tableBody');
+     var tableRows = tableBody.getElementsByTagName('tr');
+     var shouldDisplay = false;
+
+     // Iterate through each row
+     for (var rowIndex = 0; rowIndex < tableRows.length; rowIndex++) {
+         var headerCell = tableRows[rowIndex].getElementsByTagName('th')[0];
+         var dataCells = tableRows[rowIndex].getElementsByTagName('td');
+
+         if (headerCell) {
+             // If the row contains a header cell
+             var headerText = headerCell.textContent || headerCell.innerText;
+             if (headerText.toLowerCase().indexOf(filterText) > -1) {
+                 // Show this header row and subsequent rows
+                 shouldDisplay = true;
+             } else {
+                 // If shouldDisplay is true, keep showing until the next header
+                 if (shouldDisplay) {
+                     // Check if the next row is a header row
+                     var nextHeaderCell = tableRows[rowIndex + 1] && tableRows[rowIndex + 1].getElementsByTagName('th')[0];
+                     if (nextHeaderCell) {
+                         shouldDisplay = false;
+                     }
+                 }
+             }
+         }
+
+         // Display or hide the row based on shouldDisplay flag
+         tableRows[rowIndex].style.display = shouldDisplay ? 'table-row' : 'none';
+     }
+ }
+
+window.onload = function() {
+    // Define constants
+    const DOWNLOAD_BUTTON_ID = 'Download-Link';
+    const GO_BACK_BUTTON_ID = 'Go-Back-Link';
+    const PDF_FORMAT = 'PNG'; // Format used for image in PDF
+    const IMAGE_TYPE = 'image/jpeg'; // MIME type for the image
+    const PDF_IMAGE_QUALITY = 0.6; // Image quality for the PDF
+    const SCREENSHOT_SCALE = 2; // Higher resolution for screenshot
+    const TIMEOUT_DURATION = 1000; // Timeout duration to show button again in milliseconds
+
+    // Event listener for the Download button
+    document.getElementById(DOWNLOAD_BUTTON_ID).addEventListener('click', function() {
+        // Hide the buttons before taking the screenshot
+        document.getElementById(DOWNLOAD_BUTTON_ID).style.visibility = 'hidden';
+        document.getElementById(GO_BACK_BUTTON_ID).style.visibility = 'hidden';
+
+        // Get the current date and time
+        const currentDate = new Date();
+        const day = currentDate.getDate();
+        const month = currentDate.getMonth() + 1;
+        const year = currentDate.getFullYear();
+        const hours = currentDate.getHours();
+        const minutes = currentDate.getMinutes();
+        const seconds = currentDate.getSeconds();
+
+        // Format date and time
+        const formattedDate = `${day}-${month}-${year}`;
+        const formattedTime = `${hours}-${minutes}-${seconds}`;
+
+        // Take a screenshot of the webpage with higher resolution
+        html2canvas(document.body, { scale: SCREENSHOT_SCALE }).then(function(canvas) {
+            // Convert the screenshot to an image data URL
+            const screenshot = canvas.toDataURL(IMAGE_TYPE, PDF_IMAGE_QUALITY);
+
+            // Create a new jsPDF instance
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF('p', 'mm', 'a4');
+
+            // Calculate dimensions
+            const imgWidth = pdf.internal.pageSize.getWidth();
+            const pageHeight = pdf.internal.pageSize.getHeight();
+            const imgHeight = canvas.height * imgWidth / canvas.width;
+            let heightLeft = imgHeight;
+            let position = 0;
+
+            // If the image is higher than the PDF page, break into multiple pages
+            if (heightLeft > pageHeight) {
+                while (heightLeft > 0) {
+                    pdf.addImage(screenshot, PDF_FORMAT, 0, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                    position -= pageHeight;
+                    if (heightLeft > 0) {
+                        pdf.addPage();
+                    }
+                }
+            } else {
+                pdf.addImage(screenshot, PDF_FORMAT, 0, 0, imgWidth, imgHeight);
+            }
+
+            // Save the PDF with the filename including date and time
+            pdf.save(`report_${formattedDate}_${formattedTime}.pdf`);
+
+            // Show the buttons again after 1 second
+            setTimeout(function() {
+                document.getElementById(DOWNLOAD_BUTTON_ID).style.visibility = 'visible';
+                document.getElementById(GO_BACK_BUTTON_ID).style.visibility = 'visible';
+            }, TIMEOUT_DURATION);
+        });
+    });
+
+    // Event listener for the Go Back button
+    document.getElementById(GO_BACK_BUTTON_ID).addEventListener('click', function() {
+        // Redirect to home page when Go Back button is clicked
+        window.location.href = "select-report"; // Replace "select-report" with the URL of your home page
+    });
+};
+</script>
+
+</body>
+</html>

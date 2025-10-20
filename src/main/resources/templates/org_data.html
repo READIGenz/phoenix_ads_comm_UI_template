@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Conversion</title>
+    <!-- Thymeleaf resource handling -->
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/styles.css}" href="../static/css/styles.css" />
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style1.css}" href="../static/css/style1.css" />
+    <style>
+        #loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+<div id="header">
+    <!-- Thymeleaf resource handling for image -->
+    <img th:src="@{/images/logo.png}" src="../static/images/logo.png" alt="Your Logo">
+</div>
+<div id="content3">
+    <h1>Optimized Data Structure for CICs<br>
+        Compliance</h1>
+    <p>Efficiently organize bank data to meet CICs standards by dividing it into utility<br>
+        tables. This systematic division ensures seamless compliance and facilitates<br>
+        streamlined access for optimal reporting and analysis.</p>
+</div>
+
+<button onclick="executeProcedure()" class="button-procedure">Multi-Table Data Import</button>
+<!-- Thymeleaf URL handling for the "Next Page" link -->
+<a th:href="@{/generate_files}" id="next-page-link" style="display: none;">
+    <!-- Thymeleaf resource handling for image -->
+    <img th:src="@{/images/img.png}" src="../static/images/img.png" alt="Next Page" class="clickable-image">
+</a>
+<div id="message" style="display: flex; align-self: center; bottom: 3px; left: 60; width: 90; color:#FFFFFF; padding:30px; font-size: 19px;">
+    <div id="loader" style="display: none;"></div>
+</div>
+
+<script>
+    function executeProcedure() {
+        // Display loader
+        loader.style.display = "block";
+
+        var messageDiv = document.getElementById('message');
+        var nextPageLink = document.getElementById('next-page-link');
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/dataConversion', true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                // Hide loader when the response is received
+                loader.style.display = "none";
+
+                if (xhr.status === 200) {
+                    // Replace newline characters with <br> tags and wrap the message in <pre> tag for alignment
+                    var formattedMessage = '<pre style="font-size: smaller;">' + xhr.responseText.replace(/\n/g, "<br>") + '</pre>';
+
+                    // Display the success message in the 'message' div
+                    messageDiv.innerHTML = formattedMessage;
+                    messageDiv.style.display = "block";
+                    messageDiv.style.lineHeight = "normal";
+
+                    // Show the "Next Page" link
+                    nextPageLink.style.display = 'inline';
+                } else {
+                    // Display an error message in the 'message' div
+                    messageDiv.textContent = xhr.responseText;
+                    messageDiv.style.display = "block";
+                    nextPageLink.style.display = "none"; // Hide the "Next Page" link on error
+                }
+            }
+        };
+
+        xhr.send();
+    }
+
+    // JavaScript to show/hide the "Next Page" link based on message content
+    document.addEventListener("DOMContentLoaded", function() {
+        const messageDiv = document.getElementById("message");
+        const nextPageLink = document.getElementById("next-page-link");
+
+        // Check if message content is empty or error
+        if (messageDiv.textContent.trim() === "" || messageDiv.textContent.startsWith("Error")) {
+            nextPageLink.style.display = "none"; // Hide the "Next Page" link if message is empty or error
+        } else {
+            nextPageLink.style.display = "inline"; // Show the "Next Page" link if message is not empty and not an error
+        }
+    });
+</script>
+</body>
+</html>

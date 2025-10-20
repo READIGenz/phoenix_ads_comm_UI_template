@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>DQI</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/styles.css}" href="../static/css/styles.css" />
+
+</head>
+<body>
+<!--<button id="downloadBtn">Download The Report</button>-->
+<!--<button id="homeBtn" >Home</button>-->
+
+<a href="#" id="Download-Link">Download The Report</a>
+<a href="#" id="Go-Back-Link">Go Back</a>
+
+<h1>REGULATORY DATA QUALITY INDEX REPORT COMMERCIAL</h1>
+
+<h2> Address Segment of Borrower</h2>
+
+<table>
+    <tr>
+        <th>CATEGORY</th>
+        <th>Weight</th>
+        <th>Actual Percentage</th>
+        <th>Score</th>
+        <th>Invalid Counts</th>
+    </tr>
+
+    <tr>
+        <th>Address</th>
+        <td>3%</td>
+        <td th:text="${actualPerAdd}"></td>
+        <td th:text="${weighPerAdd}"></td>
+        <td th:text="${InvalidAdd}"></td>
+    </tr>
+
+    <tr>
+        <th>CITY</th>
+        <td>3%</td>
+        <td th:text="${actualPerCity}"></td>
+        <td th:text="${weighPerCity}"></td>
+        <td th:text="${InvalidCity}"></td>
+    </tr>
+
+    <tr>
+        <th>PIN CODE</th>
+        <td>3%</td>
+        <td th:text="${actualPerPinCode}"></td>
+        <td th:text="${weighPerPinCode}"></td>
+        <td th:text="${InvalidPinCode}"></td>
+    </tr>
+
+    <tr>
+        <th>STATE CODE</th>
+        <td>3%</td>
+        <td th:text="${actualPerStateCode}"></td>
+        <td th:text="${weighPerStateCode}"></td>
+        <td th:text="${InvalidStateCode}"></td>
+    </tr>
+
+    <tr>
+        <th>TELEPHONE / PHONE</th>
+        <td>3%</td>
+        <td th:text="${actualPerTelPhone}"></td>
+        <td th:text="${weighPerTelPhone}"></td>
+        <td th:text="${InvalidTelPhone}"></td>
+    </tr>
+
+    <tr style="background-color: #1967AD; color:white; font-weight:bold">
+        <td>Address Segment Score</td>
+        <td>15%</td>
+        <td ></td>
+        <td th:text="${countAddressScore}"></td>
+        <td ></td>
+    </tr>
+
+</table>
+
+<h2>Borrower Segment</h2>
+<table>
+    <tr>
+        <th>CATEGORY</th>
+        <th>Weight</th>
+        <th>Actual Percentage</th>
+        <th>Score</th>
+        <th>Invalid Counts</th>
+    </tr>
+    <!-- Current Month -->
+    <tr>
+        <th>Business Category</th>
+        <td>2%</td>
+        <td th:text="${actualPerBorrBusCat}"></td>
+        <td th:text="${weighPerBorrBusCat}"></td>
+        <td th:text="${InvalidBorrBusCat}"></td>
+    </tr>
+
+    <tr>
+        <th>PAN/CIN/TIN/Service Tax ID/Other IDs</th>
+        <td>10%</td>
+        <td th:text="${actualPerBorrIdType}"></td>
+        <td th:text="${weighPerBorrIdType}"></td>
+        <td th:text="${InvalidBorrIdType}"></td>
+
+    </tr>
+
+    <tr>
+        <th>Class of Activity- Occupation/BSR Code</th>
+        <td>2%</td>
+        <td th:text="${actualPerBorrClassAct}"></td>
+        <td th:text="${weighPerBorrClassAct}"></td>
+        <td th:text="${InvalidBorrClassAct}"></td>
+
+    </tr>
+
+    <tr>
+        <th>Industry Type</th>
+        <td>2%</td>
+        <td th:text="${actualPerBorrIndType}"></td>
+        <td th:text="${weighPerBorrIndType}"></td>
+        <td th:text="${InvalidBorrIndType}"></td>
+    </tr>
+    <tr>
+        <th>Legal Constitution</th>
+        <td>4%</td>
+        <td th:text="${actualPerBorrLegCon}"></td>
+        <td th:text="${weighPerBorrLegCon}"></td>
+        <td th:text="${InvalidBorrLegCon}"></td>
+    </tr>
+
+    <tr style="background-color: #1967AD; color:white">
+        <th style="background-color: #1967AD;">Borrower Segment Score</th>
+        <td>20%</td>
+        <td></td>
+        <td th:text="${countBorrowerScore}"></td>
+        <td></td>
+    </tr>
+</table>
+
+<h2> Related Party Segment </h2>
+<table>
+    <tr>
+        <th>CATEGORY</th>
+        <th>Weight</th>
+        <th>Actual Percentage</th>
+        <th>Score</th>
+        <th>Invalid Counts</th>
+    </tr>
+
+    <tr>
+        <th>Address</th>
+        <td>3%</td>
+        <td th:text="${actualPerRelAdd}"></td>
+        <td th:text="${weighPerRelAdd}"></td>
+        <td th:text="${InvalidRelAdd}"></td>
+    </tr>
+
+    <tr>
+        <th>CITY</th>
+        <td>3%</td>
+        <td th:text="${actualPerRelCity}"></td>
+        <td th:text="${weighPerRelCity}"></td>
+        <td th:text="${InvalidRelCity}"></td>
+    </tr>
+
+    <tr>
+        <th>PAN/CIN/TIN/Passport/DIN/Other IDs</th>
+        <td>3%</td>
+        <td th:text="${actualPerRelationShipId}"></td>
+        <td th:text="${weightPerRelationShipId}"></td>
+        <td th:text="${InvalidRelationShipId}"></td>
+    </tr>
+
+    <tr>
+        <th>PIN CODE</th>
+        <td>3%</td>
+        <td th:text="${actualPerRelPinCode}"></td>
+        <td th:text="${weighPerRelPinCode}"></td>
+        <td th:text="${InvalidRelPinCode}"></td>
+    </tr>
+
+    <tr>
+        <th>STATE CODE</th>
+        <td>3%</td>
+        <td th:text="${actualPerStateCodeRel}"></td>
+        <td th:text="${weightPerStateCodeRel}"></td>
+        <td th:text="${InvalidStateCodeRel}"></td>
+    </tr>
+
+    <tr>
+        <th>Related Type + Relationship</th>
+        <td>10%</td>
+        <td th:text="${actualPerRelationRelationShip}"></td>
+        <td th:text="${weightPerRelationRelationShip}"></td>
+        <td th:text="${InvalidRelationRelationShip}"></td>
+    </tr>
+
+    <tr>
+        <th>TELEPHONE / PHONE</th>
+        <td>3%</td>
+        <td th:text="${actualPerRelationRelationShip}"></td>
+        <td th:text="${weightPerRelationRelationShip}"></td>
+        <td th:text="${InvalidRelationRelationShip}"></td>
+    </tr>
+
+    <tr style="background-color: #1967AD; color:white; font-weight:bold">
+        <td>Relationship Segment Score</td>
+        <td >30%</td>
+        <td ></td>
+        <td th:text="${countRelationShipScore}"></td>
+        <td ></td>
+    </tr>
+</table>
+
+<h2>Credit Facility Segment</h2>
+<table>
+    <tr>
+        <th>CATEGORY</th>
+        <th>Weight</th>
+        <th>Actual Percentage</th>
+        <th>Score</th>
+        <th>Invalid Counts</th>
+    </tr>
+
+    <tr>
+        <th>Credit Type</th>
+        <td>8%</td>
+        <td th:text="${actualPerCreditType}"></td>
+        <td th:text="${weighPerCreditType}"></td>
+        <td th:text="${InvalidCreditType}"></td>
+    </tr>
+
+    <tr>
+        <th>DPD or Asset Class</th>
+        <td>8%</td>
+        <td th:text="${actualPerAssetClassificationDPD}"></td>
+        <td th:text="${weighPerAssetClassificationDPD}"></td>
+        <td th:text="${InvalidAssetClassificationDPD}"></td>
+    </tr>
+
+    <tr>
+        <th>Facility/Loan Activation/Sanction Date</th>
+        <td>3%</td>
+        <td th:text="${actualPerSanctionDate}"></td>
+        <td th:text="${weighPerSanctionDate}"></td>
+        <td th:text="${InvalidSanctionDate}"></td>
+    </tr>
+
+    <tr>
+        <th>Suit Filed Fields</th>
+        <td>3%</td>
+        <td th:text="${actualPerSuitFiled}"></td>
+        <td th:text="${weighPerSuitFiled}"></td>
+        <td th:text="${InvalidSuitFiled}"></td>
+    </tr>
+
+    <tr>
+        <th>Wilful Default Fields</th>
+        <td>3%</td>
+        <td th:text="${actualPerWilfulField}"></td>
+        <td th:text="${weighPerWilfulField}"></td>
+        <td th:text="${InvalidWilfulField}"></td>
+    </tr>
+
+    <tr>
+        <th>Account Status</th>
+        <td>10%</td>
+        <td th:text="${actualPerAccountStatus}"></td>
+        <td th:text="${weighPerAccountStatus}"></td>
+        <td th:text="${InvalidAccountStatus}"></td>
+    </tr>
+
+    <tr style="background-color: #1967AD; color:white; font-weight:bold">
+        <th style="background-color: #1967AD;">Credit Facility Segment Score</th>
+        <td>35%</td>
+        <td></td>
+        <td th:text="${countCreditFacilityScore}"></td>
+        <td></td>
+    </tr>
+</table>
+
+
+<h2>Gurantor</h2>
+
+<table>
+    <tr>
+        <th>CATEGORY</th>
+        <th>Weight</th>
+        <th>Actual Percentage</th>
+        <th>Score</th>
+        <th>Invalid Counts</th>
+    </tr>
+    <!-- Current Month -->
+    <tr>
+        <th>Address</th>
+        <td>3%</td>
+        <td th:text="${actualPerGurnAddress}"></td>
+        <td th:text="${weightPerGurnAddress}"></td>
+        <td th:text="${InvalidGurnAddress}"></td>
+    </tr>
+
+    <tr>
+        <th>City</th>
+        <td>2%</td>
+        <td th:text="${actualPerGurnCity}"></td>
+        <td th:text="${weightPerGurnCity}"></td>
+        <td th:text="${InvalidGurnCity}"></td>
+    </tr>
+
+    <tr>
+        <th>PAN/CIN/Passport/DIN</th>
+        <td>3%</td>
+        <td th:text="${actualPerGuarantorId}"></td>
+        <td th:text="${weighPerGuarantorId}"></td>
+        <td th:text="${InvalidGuarantorId}"></td>
+    </tr>
+
+    <tr>
+        <th>PIN CODE + STATE CODE</th>
+        <td>2%</td>
+        <td th:text="${actualPerGurnStatePinCode}"></td>
+        <td th:text="${weightPerGurnStatePinCode}"></td>
+        <td th:text="${InvalidGurnStatePinCode}"></td>
+    </tr>
+
+    <tr style="background-color: #1967AD; color:white; font-weight:bold">
+        <td>Gurantor Score</td>
+        <td>10%</td>
+        <td ></td>
+        <td th:text="${countGurantorScore}"></td>
+        <td></td>
+    </tr>
+
+</table>
+
+<!-- Include the latest html2canvas library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<!-- Include the latest jsPDF library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+
+window.onload = function() {
+    // Define constants
+    const DOWNLOAD_BUTTON_ID = 'Download-Link';
+    const GO_BACK_BUTTON_ID = 'Go-Back-Link';
+    const PDF_FORMAT = 'PNG'; // Format used for image in PDF
+    const IMAGE_TYPE = 'image/jpeg'; // MIME type for the image
+    const PDF_IMAGE_QUALITY = 0.6; // Image quality for the PDF
+    const SCREENSHOT_SCALE = 2; // Higher resolution for screenshot
+    const TIMEOUT_DURATION = 1000; // Timeout duration to show button again in milliseconds
+
+    // Event listener for the Download button
+    document.getElementById(DOWNLOAD_BUTTON_ID).addEventListener('click', function() {
+        // Hide the buttons before taking the screenshot
+        document.getElementById(DOWNLOAD_BUTTON_ID).style.visibility = 'hidden';
+        document.getElementById(GO_BACK_BUTTON_ID).style.visibility = 'hidden';
+
+        // Get the current date and time
+        const currentDate = new Date();
+        const day = currentDate.getDate();
+        const month = currentDate.getMonth() + 1;
+        const year = currentDate.getFullYear();
+        const hours = currentDate.getHours();
+        const minutes = currentDate.getMinutes();
+        const seconds = currentDate.getSeconds();
+
+        // Format date and time
+        const formattedDate = `${day}-${month}-${year}`;
+        const formattedTime = `${hours}-${minutes}-${seconds}`;
+
+        // Take a screenshot of the webpage with higher resolution
+        html2canvas(document.body, { scale: SCREENSHOT_SCALE }).then(function(canvas) {
+            // Convert the screenshot to an image data URL
+            const screenshot = canvas.toDataURL(IMAGE_TYPE, PDF_IMAGE_QUALITY);
+
+            // Create a new jsPDF instance
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF('p', 'mm', 'a4');
+
+            // Calculate dimensions
+            const imgWidth = pdf.internal.pageSize.getWidth();
+            const pageHeight = pdf.internal.pageSize.getHeight();
+            const imgHeight = canvas.height * imgWidth / canvas.width;
+            let heightLeft = imgHeight;
+            let position = 0;
+
+            // If the image is higher than the PDF page, break into multiple pages
+            if (heightLeft > pageHeight) {
+                while (heightLeft > 0) {
+                    pdf.addImage(screenshot, PDF_FORMAT, 0, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                    position -= pageHeight;
+                    if (heightLeft > 0) {
+                        pdf.addPage();
+                    }
+                }
+            } else {
+                pdf.addImage(screenshot, PDF_FORMAT, 0, 0, imgWidth, imgHeight);
+            }
+
+            // Save the PDF with the filename including date and time
+            pdf.save(`report_${formattedDate}_${formattedTime}.pdf`);
+
+            // Show the buttons again after 1 second
+            setTimeout(function() {
+                document.getElementById(DOWNLOAD_BUTTON_ID).style.visibility = 'visible';
+                document.getElementById(GO_BACK_BUTTON_ID).style.visibility = 'visible';
+            }, TIMEOUT_DURATION);
+        });
+    });
+
+    // Event listener for the Go Back button
+    document.getElementById(GO_BACK_BUTTON_ID).addEventListener('click', function() {
+        // Redirect to home page when Go Back button is clicked
+        window.location.href = "generate_files"; // Replace "select-report" with the URL of your home page
+    });
+};
+
+</script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #1967AD;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        /* height: 100vh; */
+        font-family: var(--font-Poppins-serif);
+    }
+
+    :root {
+        --font-Poppins-serif: 'Poppins', sans-serif;
+    }
+
+   
+    #header {
+        /* position: absolute;
+        top: 0;
+        left: 0;
+        margin: 15px;
+        text-align: left; */
+        margin: 2vh 2vw; 
+        position: relative;
+    }
+
+
+    #header img {
+        /* width: 100px; */
+        /* Adjust the width as needed */
+        /* height: auto; */
+        width: 9vw;
+    }
+
+    #content {
+        text-align: left;
+        color: #ffffff;
+        font-size: 24px;
+        position: relative;
+        margin-left: 5vw;
+    }
+
+    #content h1,
+    #content h3,
+    #content p,
+    #content p1 {
+        text-align: left;
+        margin: 0px 20px 20px 20px;
+        /* font-family: var(--font-Poppins-serif); */
+        margin-bottom: 2%;
+        /* Adjust the value to control the space between elements */
+
+    }
+
+    #content h3 {
+        color: #F5C01C;
+        /* Set the desired color */
+    }
+
+    #content p {
+        font-size: 22px;
+        line-height: 1.5;
+        /* font-family: var(--font-Poppins-serif); */
+    }
+
+    #content1 {
+        text-align: left;
+        color: #ffffff;
+        font-size: 30px;
+        position: relative;
+        /* top: 20%; */
+        left: 10rem;
+    }
+
+    #content1 p {
+        font-size: 30px;
+        line-height: 1.5;
+        /* You can adjust this value as needed */
+        /* font-family: var(--font-Poppins-serif); */
+    }
+
+    #content1 h1 {
+        /* font-family: var(--font-Poppins-serif); */
+    }
+
+
+    #content1 h1,
+    #content1 p {
+        text-align: left;
+        margin: 0px 20px 20px 20px;
+        /* font-family: var(--font-Poppins-serif); */
+        margin-bottom: 45px;
+        /* Adjust the value to control the space between elements */
+    }
+
+    #content2 {
+        text-align: left;
+        color: #ffffff;
+        font-size: 23px;
+        position: relative;
+        /* top: 20%; */
+        left: 20%;
+    }
+
+    #content2 h1,
+    #content2 p {
+        text-align: left;
+        margin: 0px 20px 20px 20px;
+        /* font-family: var(--font-Poppins-serif); */
+        margin-bottom: 50px;
+        /* Adjust the value to control the space between elements */
+    }
+
+    #content2 p {
+        font-size: 22px;
+        line-height: 1.5;
+        /* You can adjust this value as needed */
+    }
+
+    #content3 {
+        text-align: left;
+        color: #ffffff;
+        font-size: 23px;
+        position: relative;
+        /* top: 15%; */
+        left: 20%;
+    }
+
+    #content3 h1,
+    #content3 p {
+        text-align: left;
+        margin: 0px 20px 20px 20px;
+        /* font-family: var(--font-Poppins-serif); */
+        margin-bottom: 40px;
+        /* Adjust the value to control the space between elements */
+    }
+
+    #content3 p {
+        font-size: 22px;
+        line-height: 1.5;
+        /* You can adjust this value as needed */
+    }
+
+    #content4 {
+        text-align: left;
+        color: #ffffff;
+        font-size: 23px;
+        position: relative;
+        /* top: 17%; */
+        left: 20%;
+    }
+
+    #content4 h1,
+    #content4 p {
+        text-align: left;
+        margin: 0px 20px 20px 20px;
+        /* font-family: var(--font-Poppins-serif); */
+        margin-bottom: 40px;
+        /* Adjust the value to control the space between elements */
+    }
+
+    #content4 p {
+        font-size: 22px;
+        line-height: 1.5;
+        /* You can adjust this value as needed */
+    }
+
+
+    #button-container {
+        /* transform: translateX(-50%); */
+        position: relative;
+        /* bottom: 10%; */
+        /* top: 60%; */
+        left: 8vw;
+        text-align: center;
+        margin-top: 4rem;
+        /* top: 40rem; */
+        /* display: flex; */
+    }
+
+    .clickable-image {
+        position: fixed;
+        bottom: 5%; 
+        left: 90%;
+        /* margin-right: 5%; */
+    }
+
+    .next-button:hover {
+        background-color: #87CEEB;
+        /* Change the color on hover if needed */
+    }
+
+    #button-container1 {
+        text-align: center;
+        position: relative;
+        margin-top: 14rem;
+        right: 1rem;
+        /* transform: translateX(-50%); */
+    }
+
+    #button-container2 {
+        text-align: center;
+        position: relative;
+        /* bottom: 40px; */
+        right: 1%;
+        /* transform: translateX(-50%); */
+    }
+
+    .next-button {
+        /* display: inline-block; */
+        padding: 1.5vh 3vw;
+        background-color: #FFD700;
+        /* Yellow background color */
+        color: #fff;
+        /* White text color */
+        /* font-family: var(--font-Poppins-serif); */
+        /* Use Poppins font */
+        font-weight: bold;
+        /* Bold text */
+        text-decoration: none;
+        font-size: 1.5vw;
+        border-radius: 60px;
+        /* This creates a round shape */
+        transition: background-color 0.3s;
+    }
+
+    .next-button:hover {
+        background-color: #87CEEB;
+        /* Change the color on hover if needed */
+    }
+
+    

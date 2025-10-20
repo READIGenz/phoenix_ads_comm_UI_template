@@ -1,0 +1,256 @@
+
+#Download-Report1 {
+     display: inline-block;
+     color: white;
+   text-decoration: underline;
+     margin-left: 50px; /* Space between buttons */
+     font-family: Arial, sans-serif;
+     font-size: 16px;
+     text-align: center;
+     margin-top:80px;
+ }
+
+ #Download-Report2{
+ display: inline-block;
+      color: white;
+    text-decoration: underline;
+      margin-left: 50px; /* Space between buttons */
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      text-align: center;
+       margin-top:90px;
+ }
+
+#Download-Report3 {
+     display: inline-block;
+     color: white;
+   text-decoration: underline;
+     margin-left: 50px; /* Space between buttons */
+     font-family: Arial, sans-serif;
+     font-size: 16px;
+     text-align: center;
+      margin-top:100px;
+ }
+
+ #Download-Report4 {
+      display: inline-block;
+      color: white;
+    text-decoration: underline;
+      margin-left: 50px; /* Space between buttons */
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      text-align: center;
+       margin-top:100px;
+  }
+
+
+
+.Select-Report {
+
+    background-color: #1967AD;
+    display: flex;
+    flex-direction: column;
+    font-size: 22px;
+    align-items: center;
+    height: 100vh;
+}
+
+h1, h2, h3 {
+    text-align: center;
+    font-family: Calibri, sans-serif;
+}
+
+.reportbutton{
+display: inline-block;
+    padding: 15px 30px;
+    background-color: #FFD700; /* Yellow background color */
+    color: #fff; /* White text color */
+    font-family: Calibri, sans-serif; /* Use Poppins font */
+    font-weight: bold; /* Bold text */
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 60px; /* This creates a round shape */
+    transition: background-color 0.3s;
+    position: absolute;
+    top: 20%;
+    left: 1%;
+}
+
+.reportButton{
+display: inline-block;
+    padding: 15px 30px;
+    background-color: #FFD700; /* Yellow background color */
+    color: #fff; /* White text color */
+    font-family: Calibri, sans-serif; /* Use Poppins font */
+    font-weight: bold; /* Bold text */
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 60px; /* This creates a round shape */
+    transition: background-color 0.3s;
+    position: absolute;
+}
+#report1Button{
+
+    top: 20%;
+    left: 40%;
+}
+
+#report2Button{
+
+    top: 40%;
+    left: 40%;
+}
+
+#report3Button{
+
+    top: 60%;
+    left: 40%;
+}
+
+
+.duplicate{
+display: inline-block;
+    padding: 15px 30px;
+    background-color: #FFD700; /* Yellow background color */
+    color: #fff; /* White text color */
+    font-family: Calibri, sans-serif; /* Use Poppins font */
+    font-weight: bold; /* Bold text */
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 60px; /* This creates a round shape */
+    transition: background-color 0.3s;
+    position: absolute;
+    top: 20%;
+    left: 60%;
+}
+.error-message {
+    color: white;
+    position: absolute;
+    top: 70%;
+
+}
+
+.success-message{
+   color: white;
+   position: absolute;
+   top: 70%;
+   font-family: Calibri, sans-serif;
+}
+
+
+#downloadBtn {
+     padding: 10px 20px; /* Padding to provide space inside the button */
+     background-color:  #FFD700; /* Button background color */
+     color: #fff; /* Button text color */
+     border: none; /* Remove button border */
+     border-radius: 5px; /* Rounded corners */
+     cursor: pointer; /* Cursor style on hover */
+     font-size: 16px; /* Button text size */
+ }
+
+ #homeBtn {
+    padding: 10px 20px; /* Padding to provide space inside the button */
+    background-color:  #FFD700; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none; /* Remove button border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor style on hover */
+    font-size: 16px; /* Button text size */
+    position: absolute;
+    top: 1.2%;
+    left: 17%;
+ }
+
+ /* Hover effect */
+ #downloadBtn:hover {
+     background-color: #595959; /* Darker background color on hover */
+ }
+
+
+
+
+
+ table {
+         width: 100%;
+         margin: 20px auto;
+         border-collapse: collapse;
+         border: 2px solid #000000;
+         table-layout: fixed;
+         font-family: Calibri, sans-serif;
+ }
+
+ table, th, td {
+         padding: 10px;
+         text-align: center;
+         border-bottom: 1px solid #000000;
+         border-right: 1px solid #000000;
+         font-family: Calibri, sans-serif;
+ }
+
+ thead th {
+             background-color: #1967AD;
+             color: white;
+         }
+
+ tbody th {
+             background-color: #1967AD;
+             color: white;
+         }
+
+ tbody td {
+             background-color:#E8F2FF;
+         }
+ th {
+     background-color: #f2f2f2;
+ }
+
+ h1, h2 {
+     text-align: center;
+     font-family: Calibri, sans-serif;
+ }
+  .last-table{
+             width: 50%;
+             margin: 0 auto; /* This will center the element horizontally */
+  }
+
+  .idCountTable{
+   width: 50%;
+    margin: 0 auto; /* This will center the element horizontally */
+  }
+#goBackLink{
+font-size: 26px;
+}
+#downloadLink{
+font-size: 26px;
+}
+
+#Go-Back-Link {
+     display: inline-block;
+     color: #1967AD;
+   text-decoration: underline;
+     margin-left: 85px; /* Space between buttons */
+     font-family: Arial, sans-serif;
+     font-size: 16px;
+     text-align: center;
+ }
+
+ #Download-Link{
+ display: inline-block;
+      color: #1967AD;
+    text-decoration: underline;
+      margin-right: 15px; /* Space between buttons */
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      text-align: center;
+ }
+
+
+ #Go-Back-Home {
+      display: inline-block;
+      color: white;
+    text-decoration: underline;
+      margin-right: 1200px; /* Space between buttons */
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+  }
+

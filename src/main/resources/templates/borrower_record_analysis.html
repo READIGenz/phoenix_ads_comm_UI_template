@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Account Type Report</title>
+
+    <!-- Ensure that the CSS file path is correct -->
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/reportStyle.css}" href="../static/css/reportStyle.css" />
+</head>
+<body>
+<a href="#" id="Download-Link">Download The Report</a>
+<a href="#" id="Go-Back-Link">Go Back</a>
+<h1>Borrowers Records Analysis</h1>
+<table>
+    <h2>Total By count</h2>
+    <tr>
+        <th> </th>
+        <th th:if="${conTypeData1 != null and #lists.size(conTypeData1) > 0 and #lists.size(conTypeData1[0]) > 0}" th:text="${conTypeData1[0][24]}"></th>
+        <th th:if="${conTypeData2 != null and #lists.size(conTypeData2) > 0 and #lists.size(conTypeData2[0]) > 0}" th:text="${conTypeData2[0][24]}"></th>
+        <th th:if="${conTypeData3 != null and #lists.size(conTypeData3) > 0 and #lists.size(conTypeData3[0]) > 0}" th:text="${conTypeData3[0][24]}"></th>
+        <th th:if="${conTypeData4 != null and #lists.size(conTypeData4) > 0 and #lists.size(conTypeData4[0]) > 0}" th:text="${conTypeData4[0][24]}"></th>
+        <th th:if="${conTypeData5 != null and #lists.size(conTypeData5) > 0 and #lists.size(conTypeData5[0]) > 0}" th:text="${conTypeData5[0][24]}"></th>
+        <th th:if="${conTypeData6 != null and #lists.size(conTypeData6) > 0 and #lists.size(conTypeData6[0]) > 0}" th:text="${conTypeData6[0][24]}"></th>
+    </tr>
+    <tr th:each="segmentname, iterStat : ${segments}">
+        <th th:text="${segmentname}"></th>
+
+        <td th:if="${conTypeData1 != null and #lists.size(conTypeData1) > 0 and iterStat.index < #lists.size(conTypeData1[0])}"
+            th:text="${conTypeData1[0][iterStat.index]}"></td>
+
+        <td th:if="${conTypeData2 != null and #lists.size(conTypeData2) > 0 and iterStat.index < #lists.size(conTypeData2[0])}"
+            th:text="${conTypeData2[0][iterStat.index]}"></td>
+
+        <td th:if="${conTypeData3 != null and #lists.size(conTypeData3) > 0 and iterStat.index < #lists.size(conTypeData3[0])}"
+            th:text="${conTypeData3[0][iterStat.index]}"></td>
+
+        <td th:if="${conTypeData4 != null and #lists.size(conTypeData4) > 0 and iterStat.index < #lists.size(conTypeData4[0])}"
+            th:text="${conTypeData4[0][iterStat.index]}"></td>
+
+        <td th:if="${conTypeData5 != null and #lists.size(conTypeData5) > 0 and iterStat.index < #lists.size(conTypeData5[0])}"
+            th:text="${conTypeData5[0][iterStat.index]}"></td>
+
+        <td th:if="${conTypeData6 != null and #lists.size(conTypeData6) > 0 and iterStat.index < #lists.size(conTypeData6[0])}"
+            th:text="${conTypeData6[0][iterStat.index]}"></td>
+    </tr>
+
+</table>
+<h2>Total By count</h2>
+<table>
+    <tr>
+        <th> </th>
+        <th th:if="${conTypeData1 != null and #lists.size(conTypeData1) > 0 and #lists.size(conTypeData1[0]) > 0}" th:text="${conTypeData1[0][24]}"></th>
+        <th th:if="${conTypeData2 != null and #lists.size(conTypeData2) > 0 and #lists.size(conTypeData2[0]) > 0}" th:text="${conTypeData2[0][24]}"></th>
+        <th th:if="${conTypeData3 != null and #lists.size(conTypeData3) > 0 and #lists.size(conTypeData3[0]) > 0}" th:text="${conTypeData3[0][24]}"></th>
+        <th th:if="${conTypeData4 != null and #lists.size(conTypeData4) > 0 and #lists.size(conTypeData4[0]) > 0}" th:text="${conTypeData4[0][24]}"></th>
+        <th th:if="${conTypeData5 != null and #lists.size(conTypeData5) > 0 and #lists.size(conTypeData5[0]) > 0}" th:text="${conTypeData5[0][24]}"></th>
+        <th th:if="${conTypeData6 != null and #lists.size(conTypeData6) > 0 and #lists.size(conTypeData6[0]) > 0}" th:text="${conTypeData6[0][24]}"></th>
+    </tr>
+    <!-- BorrowerCredit Facility Segment Row -->
+    <tr th:each="othersegments, iterStat : ${othersegments}">
+        <th th:text="${othersegments}"></th>
+
+        <td th:if="${conTypeData1 != null and #lists.size(conTypeData1) > 0 and iterStat.index < #lists.size(conTypeData1[0])}"
+            th:text="${conTypeData1[0][iterStat.index + 3]}"></td>
+
+        <td th:if="${conTypeData2 != null and #lists.size(conTypeData2) > 0 and iterStat.index < #lists.size(conTypeData2[0])}"
+            th:text="${conTypeData2[0][iterStat.index + 3]}"></td>
+
+        <td th:if="${conTypeData3 != null and #lists.size(conTypeData3) > 0 and iterStat.index < #lists.size(conTypeData3[0])}"
+            th:text="${conTypeData3[0][iterStat.index + 3]}"></td>
+
+        <td th:if="${conTypeData4 != null and #lists.size(conTypeData4) > 0 and iterStat.index < #lists.size(conTypeData4[0])}"
+            th:text="${conTypeData4[0][iterStat.index + 3]}"></td>
+
+        <td th:if="${conTypeData5 != null and #lists.size(conTypeData5) > 0 and iterStat.index < #lists.size(conTypeData5[0])}"
+            th:text="${conTypeData5[0][iterStat.index + 3]}"></td>
+
+        <td th:if="${conTypeData6 != null and #lists.size(conTypeData6) > 0 and iterStat.index < #lists.size(conTypeData6[0])}"
+            th:text="${conTypeData6[0][iterStat.index + 3]}"></td>
+    </tr>
+</table>
+
+<h2>Identity Proof Borrower Table</h2>
+<table>
+    <tr>
+        <th>Identity Proof Borrower</th>
+        <th th:if="${conTypeData1 != null and #lists.size(conTypeData1) > 0 and #lists.size(conTypeData1[0]) > 0}" th:text="${conTypeData1[0][24]}"></th>
+        <th th:if="${conTypeData2 != null and #lists.size(conTypeData2) > 0 and #lists.size(conTypeData2[0]) > 0}" th:text="${conTypeData2[0][24]}"></th>
+        <th th:if="${conTypeData3 != null and #lists.size(conTypeData3) > 0 and #lists.size(conTypeData3[0]) > 0}" th:text="${conTypeData3[0][24]}"></th>
+        <th th:if="${conTypeData4 != null and #lists.size(conTypeData4) > 0 and #lists.size(conTypeData4[0]) > 0}" th:text="${conTypeData4[0][24]}"></th>
+        <th th:if="${conTypeData5 != null and #lists.size(conTypeData5) > 0 and #lists.size(conTypeData5[0]) > 0}" th:text="${conTypeData5[0][24]}"></th>
+        <th th:if="${conTypeData6 != null and #lists.size(conTypeData6) > 0 and #lists.size(conTypeData6[0]) > 0}" th:text="${conTypeData6[0][24]}"></th>
+    </tr>
+
+    <tr th:each="id, iterStat : ${id}">
+        <th th:text="${id}"></th>
+
+        <td th:if="${conTypeData1 != null and #lists.size(conTypeData1) > 0 and iterStat.index < #lists.size(conTypeData1[0])}"
+            th:text="${conTypeData1[0][iterStat.index + 7]}"></td>
+
+        <td th:if="${conTypeData2 != null and #lists.size(conTypeData2) > 0 and iterStat.index < #lists.size(conTypeData2[0])}"
+            th:text="${conTypeData2[0][iterStat.index + 7]}"></td>
+
+        <td th:if="${conTypeData3 != null and #lists.size(conTypeData3) > 0 and iterStat.index < #lists.size(conTypeData3[0])}"
+            th:text="${conTypeData3[0][iterStat.index + 7]}"></td>
+
+        <td th:if="${conTypeData4 != null and #lists.size(conTypeData4) > 0 and iterStat.index < #lists.size(conTypeData4[0])}"
+            th:text="${conTypeData4[0][iterStat.index + 7]}"></td>
+
+        <td th:if="${conTypeData5 != null and #lists.size(conTypeData5) > 0 and iterStat.index < #lists.size(conTypeData5[0])}"
+            th:text="${conTypeData5[0][iterStat.index + 7]}"></td>
+
+        <td th:if="${conTypeData6 != null and #lists.size(conTypeData6) > 0 and iterStat.index < #lists.size(conTypeData6[0])}"
+            th:text="${conTypeData6[0][iterStat.index + 7]}"></td>
+    </tr>
+</table>
+
+<h2>Legal Constitution of Borrower Table</h2>
+<table>
+    <tr>
+        <th>Legal Constitution of Borrower</th>
+        <th th:if="${conTypeData1 != null and #lists.size(conTypeData1) > 0 and #lists.size(conTypeData1[0]) > 0}" th:text="${conTypeData1[0][24]}"></th>
+        <th th:if="${conTypeData2 != null and #lists.size(conTypeData2) > 0 and #lists.size(conTypeData2[0]) > 0}" th:text="${conTypeData2[0][24]}"></th>
+        <th th:if="${conTypeData3 != null and #lists.size(conTypeData3) > 0 and #lists.size(conTypeData3[0]) > 0}" th:text="${conTypeData3[0][24]}"></th>
+        <th th:if="${conTypeData4 != null and #lists.size(conTypeData4) > 0 and #lists.size(conTypeData4[0]) > 0}" th:text="${conTypeData4[0][24]}"></th>
+        <th th:if="${conTypeData5 != null and #lists.size(conTypeData5) > 0 and #lists.size(conTypeData5[0]) > 0}" th:text="${conTypeData5[0][24]}"></th>
+        <th th:if="${conTypeData6 != null and #lists.size(conTypeData6) > 0 and #lists.size(conTypeData6[0]) > 0}" th:text="${conTypeData6[0][24]}"></th>
+    </tr>
+    <tr th:each="legalInstiType, iterStat : ${legalInstiType}">
+        <th th:text="${legalInstiType}"></th>
+
+        <td th:if="${conTypeData1 != null and #lists.size(conTypeData1) > 0 and iterStat.index < #lists.size(conTypeData1[0])}"
+            th:text="${conTypeData1[0][iterStat.index + 13]}"></td>
+
+        <td th:if="${conTypeData2 != null and #lists.size(conTypeData2) > 0 and iterStat.index < #lists.size(conTypeData2[0])}"
+            th:text="${conTypeData2[0][iterStat.index + 13]}"></td>
+
+        <td th:if="${conTypeData3 != null and #lists.size(conTypeData3) > 0 and iterStat.index < #lists.size(conTypeData3[0])}"
+            th:text="${conTypeData3[0][iterStat.index + 13]}"></td>
+
+        <td th:if="${conTypeData4 != null and #lists.size(conTypeData4) > 0 and iterStat.index < #lists.size(conTypeData4[0])}"
+            th:text="${conTypeData4[0][iterStat.index + 13]}"></td>
+
+        <td th:if="${conTypeData5 != null and #lists.size(conTypeData5) > 0 and iterStat.index < #lists.size(conTypeData5[0])}"
+            th:text="${conTypeData5[0][iterStat.index + 13]}"></td>
+
+        <td th:if="${conTypeData6 != null and #lists.size(conTypeData6) > 0 and iterStat.index < #lists.size(conTypeData6[0])}"
+            th:text="${conTypeData6[0][iterStat.index + 13]}"></td>
+    </tr>
+</table>
+
+<h2>Business Category of Borrower</h2>
+<table>
+    <tr>
+        <th>Business Category</th>
+        <th th:if="${conTypeData1 != null and #lists.size(conTypeData1) > 0 and #lists.size(conTypeData1[0]) > 0}" th:text="${conTypeData1[0][24]}"></th>
+        <th th:if="${conTypeData2 != null and #lists.size(conTypeData2) > 0 and #lists.size(conTypeData2[0]) > 0}" th:text="${conTypeData2[0][24]}"></th>
+        <th th:if="${conTypeData3 != null and #lists.size(conTypeData3) > 0 and #lists.size(conTypeData3[0]) > 0}" th:text="${conTypeData3[0][24]}"></th>
+        <th th:if="${conTypeData4 != null and #lists.size(conTypeData4) > 0 and #lists.size(conTypeData4[0]) > 0}" th:text="${conTypeData4[0][24]}"></th>
+        <th th:if="${conTypeData5 != null and #lists.size(conTypeData5) > 0 and #lists.size(conTypeData5[0]) > 0}" th:text="${conTypeData5[0][24]}"></th>
+        <th th:if="${conTypeData6 != null and #lists.size(conTypeData6) > 0 and #lists.size(conTypeData6[0]) > 0}" th:text="${conTypeData6[0][24]}"></th>    </tr>
+
+    <tr th:each="businessCategories, iterStat : ${businessCategories}">
+        <th th:text="${businessCategories}"></th>
+
+        <td th:if="${conTypeData1 != null and #lists.size(conTypeData1) > 0 and iterStat.index < #lists.size(conTypeData1[0])}"
+            th:text="${conTypeData1[0][iterStat.index + 25]}"></td>
+
+        <td th:if="${conTypeData2 != null and #lists.size(conTypeData2) > 0 and iterStat.index < #lists.size(conTypeData2[0])}"
+            th:text="${conTypeData2[0][iterStat.index + 25]}"></td>
+
+        <td th:if="${conTypeData3 != null and #lists.size(conTypeData3) > 0 and iterStat.index < #lists.size(conTypeData3[0])}"
+            th:text="${conTypeData3[0][iterStat.index + 25]}"></td>
+
+        <td th:if="${conTypeData4 != null and #lists.size(conTypeData4) > 0 and iterStat.index < #lists.size(conTypeData4[0])}"
+            th:text="${conTypeData4[0][iterStat.index + 25]}"></td>
+
+        <td th:if="${conTypeData5 != null and #lists.size(conTypeData5) > 0 and iterStat.index < #lists.size(conTypeData5[0])}"
+            th:text="${conTypeData5[0][iterStat.index + 25]}"></td>
+
+        <td th:if="${conTypeData6 != null and #lists.size(conTypeData6) > 0 and iterStat.index < #lists.size(conTypeData6[0])}"
+            th:text="${conTypeData6[0][iterStat.index + 25]}"></td>
+    </tr>
+</table>
+
+<h2>Business / Industry Type of Borrower</h2>
+<table>
+    <tr>
+        <th>Business / Industry Type</th>
+        <th th:if="${conTypeData1 != null and #lists.size(conTypeData1) > 0 and #lists.size(conTypeData1[0]) > 0}" th:text="${conTypeData1[0][24]}"></th>
+        <th th:if="${conTypeData2 != null and #lists.size(conTypeData2) > 0 and #lists.size(conTypeData2[0]) > 0}" th:text="${conTypeData2[0][24]}"></th>
+        <th th:if="${conTypeData3 != null and #lists.size(conTypeData3) > 0 and #lists.size(conTypeData3[0]) > 0}" th:text="${conTypeData3[0][24]}"></th>
+        <th th:if="${conTypeData4 != null and #lists.size(conTypeData4) > 0 and #lists.size(conTypeData4[0]) > 0}" th:text="${conTypeData4[0][24]}"></th>
+        <th th:if="${conTypeData5 != null and #lists.size(conTypeData5) > 0 and #lists.size(conTypeData5[0]) > 0}" th:text="${conTypeData5[0][24]}"></th>
+        <th th:if="${conTypeData6 != null and #lists.size(conTypeData6) > 0 and #lists.size(conTypeData6[0]) > 0}" th:text="${conTypeData6[0][24]}"></th>    </tr>
+
+    <tr th:each="businessTypes, iterStat : ${businessTypes}">
+        <th th:text="${businessTypes}"></th>
+
+        <td th:if="${conTypeData1 != null and #lists.size(conTypeData1) > 0 and iterStat.index < #lists.size(conTypeData1[0])}"
+            th:text="${conTypeData1[0][iterStat.index + 32]}"></td>
+
+        <td th:if="${conTypeData2 != null and #lists.size(conTypeData2) > 0 and iterStat.index < #lists.size(conTypeData2[0])}"
+            th:text="${conTypeData2[0][iterStat.index + 32]}"></td>
+
+        <td th:if="${conTypeData3 != null and #lists.size(conTypeData3) > 0 and iterStat.index < #lists.size(conTypeData3[0])}"
+            th:text="${conTypeData3[0][iterStat.index + 32]}"></td>
+
+        <td th:if="${conTypeData4 != null and #lists.size(conTypeData4) > 0 and iterStat.index < #lists.size(conTypeData4[0])}"
+            th:text="${conTypeData4[0][iterStat.index + 32]}"></td>
+
+        <td th:if="${conTypeData5 != null and #lists.size(conTypeData5) > 0 and iterStat.index < #lists.size(conTypeData5[0])}"
+            th:text="${conTypeData5[0][iterStat.index + 32]}"></td>
+
+        <td th:if="${conTypeData6 != null and #lists.size(conTypeData6) > 0 and iterStat.index < #lists.size(conTypeData6[0])}"
+            th:text="${conTypeData6[0][iterStat.index + 32]}"></td>
+    </tr>
+</table>
+
+<h2>Class of Activity 1 of Borrower</h2>
+<table>
+    <tr>
+        <th>Class of Activity</th>
+        <th th:if="${conTypeData1 != null and #lists.size(conTypeData1) > 0 and #lists.size(conTypeData1[0]) > 0}" th:text="${conTypeData1[0][24]}"></th>
+        <th th:if="${conTypeData2 != null and #lists.size(conTypeData2) > 0 and #lists.size(conTypeData2[0]) > 0}" th:text="${conTypeData2[0][24]}"></th>
+        <th th:if="${conTypeData3 != null and #lists.size(conTypeData3) > 0 and #lists.size(conTypeData3[0]) > 0}" th:text="${conTypeData3[0][24]}"></th>
+        <th th:if="${conTypeData4 != null and #lists.size(conTypeData4) > 0 and #lists.size(conTypeData4[0]) > 0}" th:text="${conTypeData4[0][24]}"></th>
+        <th th:if="${conTypeData5 != null and #lists.size(conTypeData5) > 0 and #lists.size(conTypeData5[0]) > 0}" th:text="${conTypeData5[0][24]}"></th>
+        <th th:if="${conTypeData6 != null and #lists.size(conTypeData6) > 0 and #lists.size(conTypeData6[0]) > 0}" th:text="${conTypeData6[0][24]}"></th>    </tr>
+    <!-- Borrower Row -->
+    <tr>
+        <th>Class of Activity 1</th>
+        <td th:if="${conTypeData1 != null and #lists.size(conTypeData1) > 0 and #lists.size(conTypeData1[0]) > 0}" th:text="${conTypeData1[0][43]}"></td>
+        <td th:if="${conTypeData2 != null and #lists.size(conTypeData2) > 0 and #lists.size(conTypeData2[0]) > 0}" th:text="${conTypeData2[0][43]}"></td>
+        <td th:if="${conTypeData3 != null and #lists.size(conTypeData3) > 0 and #lists.size(conTypeData3[0]) > 0}" th:text="${conTypeData3[0][43]}"></td>
+        <td th:if="${conTypeData4 != null and #lists.size(conTypeData4) > 0 and #lists.size(conTypeData4[0]) > 0}" th:text="${conTypeData4[0][43]}"></td>
+        <td th:if="${conTypeData5 != null and #lists.size(conTypeData5) > 0 and #lists.size(conTypeData5[0]) > 0}" th:text="${conTypeData5[0][43]}"></td>
+        <td th:if="${conTypeData6 != null and #lists.size(conTypeData6) > 0 and #lists.size(conTypeData6[0]) > 0}" th:text="${conTypeData6[0][43]}"></td>
+    </tr>
+</table>
+
+<!-- Include the latest html2canvas library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<!-- Include the latest jsPDF library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+
+    function filterTable() {
+      var filterText = document.getElementById('filterInput').value.toLowerCase();
+      var tableBody = document.getElementById('tableBody');
+      var tableRows = tableBody.getElementsByTagName('tr');
+
+      for (var rowIndex = 0; rowIndex < tableRows.length; rowIndex++) {
+          var firstTableHeader = tableRows[rowIndex].getElementsByTagName('th')[0];
+          if (firstTableHeader) {
+              var cellTextValue = firstTableHeader.textContent || firstTableHeader.innerText;
+              tableRows[rowIndex].style.display = cellTextValue.toLowerCase().indexOf(filterText) > -1 ? '' : 'none';
+          }
+      }
+  }
+
+window.onload = function() {
+    // Define constants
+    const DOWNLOAD_BUTTON_ID = 'Download-Link';
+    const GO_BACK_BUTTON_ID = 'Go-Back-Link';
+    const PDF_FORMAT = 'PNG'; // Format used for image in PDF
+    const IMAGE_TYPE = 'image/jpeg'; // MIME type for the image
+    const PDF_IMAGE_QUALITY = 0.6; // Image quality for the PDF
+    const SCREENSHOT_SCALE = 2; // Higher resolution for screenshot
+    const TIMEOUT_DURATION = 1000; // Timeout duration to show button again in milliseconds
+
+    // Event listener for the Download button
+    document.getElementById(DOWNLOAD_BUTTON_ID).addEventListener('click', function() {
+        // Hide the buttons before taking the screenshot
+        document.getElementById(DOWNLOAD_BUTTON_ID).style.visibility = 'hidden';
+        document.getElementById(GO_BACK_BUTTON_ID).style.visibility = 'hidden';
+
+        // Get the current date and time
+        const currentDate = new Date();
+        const day = currentDate.getDate();
+        const month = currentDate.getMonth() + 1;
+        const year = currentDate.getFullYear();
+        const hours = currentDate.getHours();
+        const minutes = currentDate.getMinutes();
+        const seconds = currentDate.getSeconds();
+
+        // Format date and time
+        const formattedDate = `${day}-${month}-${year}`;
+        const formattedTime = `${hours}-${minutes}-${seconds}`;
+
+        // Take a screenshot of the webpage with higher resolution
+        html2canvas(document.body, { scale: SCREENSHOT_SCALE }).then(function(canvas) {
+            // Convert the screenshot to an image data URL
+            const screenshot = canvas.toDataURL(IMAGE_TYPE, PDF_IMAGE_QUALITY);
+
+            // Create a new jsPDF instance
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF('p', 'mm', 'a4');
+
+            // Calculate dimensions
+            const imgWidth = pdf.internal.pageSize.getWidth();
+            const pageHeight = pdf.internal.pageSize.getHeight();
+            const imgHeight = canvas.height * imgWidth / canvas.width;
+            let heightLeft = imgHeight;
+            let position = 0;
+
+            // If the image is higher than the PDF page, break into multiple pages
+            if (heightLeft > pageHeight) {
+                while (heightLeft > 0) {
+                    pdf.addImage(screenshot, PDF_FORMAT, 0, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                    position -= pageHeight;
+                    if (heightLeft > 0) {
+                        pdf.addPage();
+                    }
+                }
+            } else {
+                pdf.addImage(screenshot, PDF_FORMAT, 0, 0, imgWidth, imgHeight);
+            }
+
+            // Save the PDF with the filename including date and time
+            pdf.save(`report_${formattedDate}_${formattedTime}.pdf`);
+
+            // Show the buttons again after 1 second
+            setTimeout(function() {
+                document.getElementById(DOWNLOAD_BUTTON_ID).style.visibility = 'visible';
+                document.getElementById(GO_BACK_BUTTON_ID).style.visibility = 'visible';
+            }, TIMEOUT_DURATION);
+        });
+    });
+
+    // Event listener for the Go Back button
+    document.getElementById(GO_BACK_BUTTON_ID).addEventListener('click', function() {
+        // Redirect to home page when Go Back button is clicked
+        window.location.href = "select-report"; // Replace "select-report" with the URL of your home page
+    });
+};
+
+</script>
+
+</body>
+</html>

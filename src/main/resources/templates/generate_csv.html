@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Excel to Multiple CSVs</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{/css/excel_to_csv.css}" href="../static/css/excel_to_csv.css" />
+
+    <script>
+        // Show Next button after form submission
+        function showNextButton() {
+            document.getElementById("nextBtn").style.display = "inline-block";
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <h1>Excel → Multiple CSV Converter</h1>
+
+    <!-- When form submitted, show Next button -->
+    <form th:action="@{/exceltocsv}" method="post" enctype="multipart/form-data" onsubmit="showNextButton()">
+        <label for="file">Upload Excel (.xls / .xlsx)</label>
+        <input id="file" name="file" type="file" accept=".xls,.xlsx" required />
+        <button type="submit">Convert & Download ZIP</button>
+    </form>
+
+    <p class="note">
+        Each sheet in your Excel file will be converted into a separate CSV file inside a ZIP.
+    </p>
+</div>
+
+<!-- Initially hidden Next button -->
+<button type="button" id="nextBtn"
+        onclick="window.location.href='/csv_to_db';">
+    Next →
+</button>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMMERCIAL - Text to Excel Converter</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/tudf_to_excel.css}" href="../static/css/tudf_to_excel.css" />
+</head>
+<body>
+<a href="#" id="Go-Back-Home">Go Back</a>
+<h1>COMMERCIAL - Text to Excel Converter</h1>
+
+<div class="container">
+
+    <form method="post" action="/upload-excel" enctype="multipart/form-data" id="upload-form" class="form-horizontal">
+        <div class="form-group">
+            <label for="file-input" class="file-label">Choose file:</label>
+            <input type="file" name="document" accept=".txt, .tap" id="file-input" class="file-input" required>
+        </div>
+        <div class="form-group">
+            <label for="textInput" class="input-label">
+                Enter Name:
+                <input class="text-input" type="text" id="textInput" name="textInput" required>
+            </label>
+        </div>
+        <button type="submit" class="submit-button">Convert to Excel</button>
+    </form>
+
+    <div id="error-message" class="error"></div>
+</div>
+
+<script>
+    document.getElementById('file-input').addEventListener('change', function() {
+        const fileLabel = document.querySelector('.file-label');
+        const fileName = this.files.length ? this.files[0].name : 'Choose file';
+        fileLabel.textContent = fileName;
+    });
+
+    document.getElementById('upload-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const form = event.target;
+        const formData = new FormData(form);
+        const errorMessageDiv = document.getElementById('error-message');
+        errorMessageDiv.style.display = 'none';
+
+        fetch(form.action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.text().then(data => showError(data));
+            } else {
+                return response.blob().then(blobData => {
+                    const excelUrl = window.URL.createObjectURL(blobData);
+                    const element = document.createElement('a');
+                    element.href = excelUrl;
+                    element.download = 'commercial_converted_file.xlsx';
+                    document.body.appendChild(element);
+                    element.click();
+                    element.remove();
+                });
+            }
+        })
+        .catch(error => {
+            showError('An error occurred: ' + error.message);
+        });
+    });
+
+   document.getElementById('Go-Back-Home').addEventListener('click', function() {
+             // Redirect to home page when Home button is clicked
+             window.location.href ="generate_files"; // Replace "home-page.html" with the URL of your home page
+         });
+
+    function showError(message) {
+        const errorMessageDiv = document.getElementById('error-message');
+        errorMessageDiv.textContent = message;
+        errorMessageDiv.style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
