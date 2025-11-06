@@ -255,36 +255,22 @@
 
 <script>
     function filterTable() {
-     var filterText = document.getElementById('filterInput').value.toLowerCase();
-     var tableBody = document.getElementById('tableBody');
-     var tableRows = tableBody.getElementsByTagName('tr');
-     var shouldDisplay = false;
+    var filterText = document.getElementById('filterInput').value.toLowerCase().trim();
+    var tableBody = document.getElementById('tableBody');
+    var tableRows = tableBody.getElementsByTagName('tr');
+    var showGroup = false;
 
-    // Iterate through each row
     for (var rowIndex = 0; rowIndex < tableRows.length; rowIndex++) {
         var headerCell = tableRows[rowIndex].getElementsByTagName('th')[0];
-        var dataCells = tableRows[rowIndex].getElementsByTagName('td');
 
         if (headerCell) {
-            // If the row contains a header cell
-            var headerText = headerCell.textContent || headerCell.innerText;
-            if (headerText.toLowerCase().indexOf(filterText) > -1) {
-                // Show this header row and subsequent rows
-                shouldDisplay = true;
-            } else {
-                // If shouldDisplay is true, keep showing until the next header
-                if (shouldDisplay) {
-                    // Check if the next row is a header row
-                    var nextHeaderCell = tableRows[rowIndex + 1] && tableRows[rowIndex + 1].getElementsByTagName('th')[0];
-                    if (nextHeaderCell) {
-                        shouldDisplay = false;
-                    }
-                }
-            }
+            var headerText = headerCell.textContent.toLowerCase().trim();
+
+            // ✅ Show if input empty OR startsWith
+            showGroup = (filterText === "" || headerText.startsWith(filterText));
         }
 
-        // Display or hide the row based on shouldDisplay flag
-        tableRows[rowIndex].style.display = shouldDisplay ? 'table-row' : 'none';
+        tableRows[rowIndex].style.display = showGroup ? "" : "none";
     }
 }
 
