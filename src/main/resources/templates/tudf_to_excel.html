@@ -4,27 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COMMERCIAL - Text to Excel Converter</title>
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/tudf_to_excel.css}" href="../static/css/tudf_to_excel.css" />
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{/css/tudf_to_excel.css}" href="../static/css/tudf_to_excel.css" />
 </head>
 <body>
+
 <a href="#" id="Go-Back-Home">Go Back</a>
 <h1>COMMERCIAL - Text to Excel Converter</h1>
 
 <div class="container">
 
-    <form method="post" action="/upload-excel" enctype="multipart/form-data" id="upload-form" class="form-horizontal">
+    <form method="post" action="/upload-excel" enctype="multipart/form-data"
+          id="upload-form" class="form-horizontal">
+
         <div class="form-group">
             <label for="file-input" class="file-label">Choose file:</label>
-            <input type="file" name="document" accept=".txt, .tap" id="file-input" class="file-input" required>
+            <input type="file" name="document" accept=".txt, .tap"
+                   id="file-input" class="file-input" required>
         </div>
+
         <div class="form-group">
             <label for="textInput" class="input-label">
-                Enter Account Number:
-                <input class="text-input" type="text" id="textInput" name="textInput" required>
+                Enter Name (optional):
+                <input class="text-input" type="text"
+                       id="textInput" name="textInput"
+                       placeholder="Leave empty for full file">
             </label>
         </div>
+
         <button type="submit" class="submit-button">Convert to Excel</button>
     </form>
+
+    <!-- ✅ LOADER (ADDED) -->
+    <div id="loader" class="loader" style="display:none;">
+        <div class="spinner"></div>
+        <p>Processing, please wait...</p>
+    </div>
 
     <div id="error-message" class="error"></div>
 </div>
@@ -38,10 +53,16 @@
 
     document.getElementById('upload-form').addEventListener('submit', function(event) {
         event.preventDefault();
+
         const form = event.target;
         const formData = new FormData(form);
         const errorMessageDiv = document.getElementById('error-message');
+        const loader = document.getElementById('loader');
+        const submitBtn = document.querySelector('.submit-button');
+
         errorMessageDiv.style.display = 'none';
+        loader.style.display = 'block';
+        submitBtn.disabled = true;
 
         fetch(form.action, {
             method: 'POST',
@@ -49,28 +70,33 @@
         })
         .then(response => {
             if (!response.ok) {
-                return response.text().then(data => showError(data));
-            } else {
-                return response.blob().then(blobData => {
-                    const excelUrl = window.URL.createObjectURL(blobData);
-                    const element = document.createElement('a');
-                    element.href = excelUrl;
-                    element.download = 'commercial_converted_file.xlsx';
-                    document.body.appendChild(element);
-                    element.click();
-                    element.remove();
+                return response.text().then(data => {
+                    throw new Error(data);
                 });
             }
+            return response.blob();
+        })
+        .then(blobData => {
+            const excelUrl = window.URL.createObjectURL(blobData);
+            const element = document.createElement('a');
+            element.href = excelUrl;
+            element.download = 'commercial_converted_file.xlsx';
+            document.body.appendChild(element);
+            element.click();
+            element.remove();
         })
         .catch(error => {
-            showError('An error occurred: ' + error.message);
+            showError(error.message);
+        })
+        .finally(() => {
+            loader.style.display = 'none';
+            submitBtn.disabled = false;
         });
     });
 
-   document.getElementById('Go-Back-Home').addEventListener('click', function() {
-             // Redirect to home page when Home button is clicked
-             window.location.href ="generate_files"; // Replace "home-page.html" with the URL of your home page
-         });
+    document.getElementById('Go-Back-Home').addEventListener('click', function() {
+        window.location.href = "generate_files";
+    });
 
     function showError(message) {
         const errorMessageDiv = document.getElementById('error-message');
