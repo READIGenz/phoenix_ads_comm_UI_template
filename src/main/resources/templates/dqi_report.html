@@ -149,7 +149,7 @@
 
     <tr>
         <th>Address</th>
-        <td>3%</td>
+        <td th:text="${addressSegRelation} + '%'"></td>
         <td th:text="${actualPerRelAdd}"></td>
         <td th:text="${weighPerRelAdd}"></td>
         <td th:text="${InvalidRelAdd}"></td>
@@ -157,7 +157,7 @@
 
     <tr>
         <th>CITY</th>
-        <td>3%</td>
+        <td th:text="${cityValidationRelation} + '%'"></td>
         <td th:text="${actualPerRelCity}"></td>
         <td th:text="${weighPerRelCity}"></td>
         <td th:text="${InvalidRelCity}"></td>
@@ -165,7 +165,7 @@
 
     <tr>
         <th>PAN/CIN/TIN/Passport/DIN/Other IDs</th>
-        <td>3%</td>
+        <td th:text="${relationSegIdType} + '%'"></td>
         <td th:text="${actualPerRelationShipId}"></td>
         <td th:text="${weightPerRelationShipId}"></td>
         <td th:text="${InvalidRelationShipId}"></td>
@@ -173,7 +173,7 @@
 
     <tr>
         <th>PIN CODE</th>
-        <td>3%</td>
+        <td th:text="${pinCodeRelation} + '%'"></td>
         <td th:text="${actualPerRelPinCode}"></td>
         <td th:text="${weighPerRelPinCode}"></td>
         <td th:text="${InvalidRelPinCode}"></td>
@@ -181,7 +181,7 @@
 
     <tr>
         <th>STATE CODE</th>
-        <td>3%</td>
+        <td th:text="${statecodeRelationValidation} + '%'"></td>
         <td th:text="${actualPerStateCodeRel}"></td>
         <td th:text="${weightPerStateCodeRel}"></td>
         <td th:text="${InvalidStateCodeRel}"></td>
@@ -189,7 +189,7 @@
 
     <tr>
         <th>Related Type + Relationship</th>
-        <td>10%</td>
+        <td th:text="${relatedTypeRelationShip} + '%'"></td>
         <td th:text="${actualPerRelationRelationShip}"></td>
         <td th:text="${weightPerRelationRelationShip}"></td>
         <td th:text="${InvalidRelationRelationShip}"></td>
@@ -197,15 +197,15 @@
 
     <tr>
         <th>TELEPHONE / PHONE</th>
-        <td>3%</td>
-        <td th:text="${actualPerRelationRelationShip}"></td>
-        <td th:text="${weightPerRelationRelationShip}"></td>
-        <td th:text="${InvalidRelationRelationShip}"></td>
+        <td th:text="${telMobileRelationvalidation}  + '%'"></td>
+        <td th:text="${actualPerRelationShipTelMobile}"></td>
+        <td th:text="${weightPerRelationShipTelMobile}"></td>
+        <td th:text="${InvalidRelationShipTelMobile}"></td>
     </tr>
 
-    <tr style="background-color: #1967AD; color:white; font-weight:bold">
-        <td>Relationship Segment Score</td>
-        <td >30%</td>
+    <tr style="background-color: #1967AD; font-weight:bold">
+        <td style="color: white">Relationship Segment Score</td>
+        <td style="color:#FFFFFF" th:text="${weightPerRelation} + '%'"> </td>
         <td ></td>
         <td th:text="${countRelationShipScore}"></td>
         <td ></td>
@@ -293,7 +293,7 @@
     <!-- Current Month -->
     <tr>
         <th>Address</th>
-        <td>3%</td>
+        <td th:text="${AddressSegGurantor} + '%'"></td>
         <td th:text="${actualPerGurnAddress}"></td>
         <td th:text="${weightPerGurnAddress}"></td>
         <td th:text="${InvalidGurnAddress}"></td>
@@ -301,7 +301,7 @@
 
     <tr>
         <th>City</th>
-        <td>2%</td>
+        <td th:text="${CitySegGurantor} + '%'"></td>
         <td th:text="${actualPerGurnCity}"></td>
         <td th:text="${weightPerGurnCity}"></td>
         <td th:text="${InvalidGurnCity}"></td>
@@ -309,23 +309,23 @@
 
     <tr>
         <th>PAN/CIN/Passport/DIN</th>
-        <td>3%</td>
-        <td th:text="${actualPerGuarantorId}"></td>
+        <td th:text="${GurantorSegIdType} + '%'" ></td>
+        <td th:text="${actualPerGuarantorId}"> </td>
         <td th:text="${weighPerGuarantorId}"></td>
         <td th:text="${InvalidGuarantorId}"></td>
     </tr>
 
     <tr>
         <th>PIN CODE + STATE CODE</th>
-        <td>2%</td>
+        <td th:text="${PinCodeStateCodeGurantor} + '%'"></td>
         <td th:text="${actualPerGurnStatePinCode}"></td>
         <td th:text="${weightPerGurnStatePinCode}"></td>
         <td th:text="${InvalidGurnStatePinCode}"></td>
     </tr>
 
-    <tr style="background-color: #1967AD; color:white; font-weight:bold">
-        <td>Gurantor Score</td>
-        <td>10%</td>
+    <tr style="background-color: #1967AD; font-weight:bold">
+        <td style="background-color: #1967AD; color: white">Gurantor Score</td>
+        <td style="color:#FFFFFF" th:text="${countWeightageGurantor} + '%'"></td>
         <td ></td>
         <td th:text="${countGurantorScore}"></td>
         <td></td>
