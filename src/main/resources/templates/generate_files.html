@@ -75,8 +75,11 @@
         </form>
     </div>
     <div>
-        <form id="reportForm" action="/home" method="post">
-            <button id="submitButton" type="submit" class="dqi_button">DQI Report</button>
+        <!-- ================= GENERATE REPORT ================= -->
+        <form th:action="@{/reportDQI}" method="get">
+            <button type="submit" class="dqireportbutton">
+                Collective DQI
+            </button>
         </form>
     </div>
     <div>
@@ -175,7 +178,7 @@
     }
 
     /* COMPLETE FILES */
-    function runJarBackupReport() {
+    function runJarBackup() {
         callApi('/api/run-jar-backup');
     }
 
