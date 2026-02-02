@@ -4,7 +4,7 @@
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/styles.css}" href="../static/css/styles.css" />
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style1.css}" href="../static/css/style1.css" />
     <style>
-        /* Add styling for the loader */
+        /* EXISTING loader */
         #loader {
             border: 4px solid #f3f3f3;
             border-top: 4px solid #3498db;
@@ -14,11 +14,41 @@
             animation: spin 1s linear infinite;
             margin: 0 auto;
             margin-top: 40px;
+            display: none;
         }
 
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
+        }
+
+        /* DQI POPUP */
+        #dqiModal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        #dqiModalContent {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 6px;
+            text-align: center;
+            min-width: 300px;
+        }
+
+        /* IMPORTANT FIX: keep DQI button visible inside popup */
+        #dqiModal .dqi_button {
+            position: static !important;
+            top: auto !important;
+            left: auto !important;
         }
     </style>
 </head>
@@ -45,8 +75,11 @@
         </form>
     </div>
     <div>
-        <form id="reportForm" action="/home" method="post">
-            <button id="submitButton" type="submit" class="dqi_button">DQI Report</button>
+        <!-- ================= GENERATE REPORT ================= -->
+        <form th:action="@{/reportDQI}" method="get">
+            <button type="submit" class="dqireportbutton">
+                Collective DQI
+            </button>
         </form>
     </div>
     <div>
@@ -83,113 +116,143 @@
     <p th:text="${errorMessage}"></p>
 </div>
 
-<!--
-<a class="openPage" th:href="@{/csv_to_db}">Upload New csv</a>
--->
-
 <!-- Div for success or error message -->
 <div id="message" style="position: fixed; bottom: 0; left: 0; width: 100%; background-color:none ; color:#FFFFFF; text-align: center; padding: 10px; font-size: 20px;"></div>
 
 <!-- Loader -->
 <div id="loader" style="display: none;"></div>
 
+<!-- DQI CONFIRMATION POPUP -->
+<div id="dqiModal">
+    <div id="dqiModalContent">
+        <p><strong>Choose Action</strong></p>
+        <br>
+
+        <button onclick="generateDQIFromPopup()" class="dqi_button">
+            Generate DQI
+        </button>
+
+        <br><br>
+
+        <button onclick="generateReportFromPopup()" class="generateReport">
+            Generate Report
+        </button>
+
+        <br><br>
+
+        <button onclick="closeDQIModal()" class="runJarBackup">
+            Cancel
+        </button>
+    </div>
+</div>
+
 <script>
-    function tudfToExcel(){
-       // Open another page when the button is clicked
-        window.location.href = '/tudf_to_excel';
-   }
-
+    /* ORIGINAL DQI LOGIC — UNCHANGED */
     document.getElementById('submitButton').addEventListener('click', function(event) {
-    // Prevent the default form submission behavior
-    event.preventDefault();
+        event.preventDefault();
 
-    // Display loader
-    document.getElementById('loader').style.display = 'block';
-
-    // Simulate processing delay
-    setTimeout(function() {
-        // Hide loader
-        document.getElementById('loader').style.display = 'none';
-
-        // Make AJAX request to fetch message from backend
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', '/getMessage', true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                // Display message received from backend
-                document.getElementById('message').innerText = xhr.responseText;
-                document.getElementById('message').style.display = 'block';
-
-                // Redirect to /home after 5 seconds
-                setTimeout(function() {
-                    window.location.href = '/home';
-                }, 5000); // Adjust the delay before redirection (5 seconds)
-            }
-        };
-        xhr.send();
-    }, 3000); // Simulate processing time (3 seconds)
-});
-
-
-
-
-    function openAnotherPage() {
-       // Open another page when the button is clicked
-       window.location.href = 'csv_to_db';
-   }
-      function runJar() {
-        // Display loader
         document.getElementById('loader').style.display = 'block';
 
-        // Send an HTTP request to the server to run the JAR file
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', '/api/run-jar', true);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                // Hide the loader
-                document.getElementById('loader').style.display = 'none';
+        setTimeout(function() {
+            document.getElementById('loader').style.display = 'none';
 
-                if (xhr.status === 200) {
-                    // Display the result from the server in the 'message' div
-                    document.getElementById('message').innerHTML = xhr.responseText;
-                    // Show the "Generate Report" button
-                    document.querySelector('.generateReport').style.display = 'block';
-                } else {
-                    // Display an error message in the 'message' div
-                    document.getElementById('message').innerHTML = 'Error: ' + xhr.responseText;
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/getMessage', true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById('message').innerText = xhr.responseText;
+                    document.getElementById('message').style.display = 'block';
+
+                    setTimeout(function() {
+                        window.location.href = '/home';
+                    }, 5000);
                 }
-            }
-        };
-        xhr.send();
+            };
+            xhr.send();
+        }, 3000);
+    });
+
+    /* TRANSACTIONAL FILES */
+    function runJar() {
+        callApi('/api/run-jar');
     }
 
+    /* COMPLETE FILES */
     function runJarBackup() {
-        // Display loader
-        document.getElementById('loader').style.display = 'block';
+        callApi('/api/run-jar-backup');
+    }
 
-        // Send an HTTP request to the server to run the JAR file
+    function callApi(url) {
+        const loader = document.getElementById('loader');
+        const message = document.getElementById('message');
+
+        loader.style.display = 'block';
+
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', '/api/run-jar-backup', true);
+        xhr.open('GET', url, true);
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
-                // Hide the loader
-                document.getElementById('loader').style.display = 'none';
+                loader.style.display = 'none';
 
                 if (xhr.status === 200) {
-                    // Display the result from the server in the 'message' div
-                    document.getElementById('message').innerHTML = xhr.responseText;
-                    // Show the "Generate Report" button
-                    document.querySelector('.generateReport').style.display = 'block';
+
+                    // ✅ SHOW SUCCESS MESSAGE FIRST
+                    message.innerHTML = xhr.responseText;
+                    message.style.display = 'block';
+
+                    // ✅ FORCE BROWSER TO PAINT MESSAGE
+                    requestAnimationFrame(() => {
+                        // ✅ OPEN POPUP AFTER DELAY
+                        setTimeout(() => {
+                            document.getElementById('dqiModal').style.display = 'flex';
+                        }, 2000);
+                    });
+
                 } else {
-                    // Display an error message in the 'message' div
-                    document.getElementById('message').innerHTML = 'Error: ' + xhr.responseText;
+                    message.innerHTML = 'Error: ' + xhr.responseText;
+                    message.style.display = 'block';
                 }
             }
         };
         xhr.send();
     }
 
-   function generateReport() {
+    /* REUSE DQI BUTTON LOGIC */
+    function generateDQIFromPopup() {
+    closeDQIModal();
+
+    const loader = document.getElementById('loader');
+    const message = document.getElementById('message');
+
+    loader.style.display = 'block';
+
+    // ⏳ same 3 sec delay as previous
+    setTimeout(function () {
+        loader.style.display = 'none';
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', '/getMessage', true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                message.innerText = xhr.responseText;
+                message.style.display = 'block';
+
+                // ⏳ same redirect delay (5 sec)
+                setTimeout(function () {
+                    window.location.href = '/home';
+                }, 5000);
+            }
+        };
+        xhr.send();
+    }, 3000);
+}
+
+
+    function closeDQIModal() {
+        document.getElementById('dqiModal').style.display = 'none';
+    }
+
+function generateReport() {
     // Display loader
     document.getElementById('loader').style.display = 'block';
 
@@ -236,6 +299,17 @@
     xhr.send();
 }
 
+    function generateReportFromPopup() {
+    generateReport();
+}
+
+    function tudfToExcel() {
+        window.location.href = '/tudfToExcel';
+    }
+
+    function openAnotherPage() {
+        window.location.href = 'csv_to_db';
+    }
 </script>
 </body>
 </html>

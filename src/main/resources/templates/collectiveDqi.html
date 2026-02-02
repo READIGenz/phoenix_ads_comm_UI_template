@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>DQI Report</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/styles.css}" href="../static/css/styles.css" />
+
+</head>
+<body>
+<a href="#" id="Download-Link">Download The Report</a>
+<a href="#" id="Go-Back-Link">Go Back</a>
+
+<h2>DQI Report For Current Month</h2>
+
+<!-- ================= FILTER SECTION ================= -->
+<form th:action="@{/reportDQI}" method="get">
+
+    <label><b>Year:</b></label>
+    <select name="year" required>
+        <option value="">Select Year</option>
+        <option th:each="y : ${#numbers.sequence(2020, T(java.time.Year).now().value)}"
+                th:value="${y}"
+                th:text="${y}"
+                th:selected="${y == selectedYear}">
+        </option>
+    </select>
+
+    &nbsp;&nbsp;
+
+    <label><b>Month:</b></label>
+    <select name="month" required>
+        <option value="">Select Month</option>
+        <option th:each="m : ${#numbers.sequence(1,12)}"
+                th:value="${m}"
+                th:text="${#temporals.monthName(#temporals.create(2020, m, 1))}"
+                th:selected="${m == selectedMonth}">
+        </option>
+    </select>
+
+    &nbsp;&nbsp;
+
+    <button type="submit">Show Report</button>
+
+</form>
+
+<br><br>
+
+<!-- ================= REPORT TABLE ================= -->
+<table border="1" width="80%" th:if="${reportList != null}">
+
+    <tr>
+        <th>Date</th>
+        <th>Total Borrower</th>
+        <th>Total Address</th>
+        <th>Total Relation</th>
+        <th>Total Credit Facility</th>
+        <th>Total Guarantor</th>
+        <th>Total Records</th>
+    </tr>
+
+    <tr th:each="row : ${reportList}">
+        <td th:text="${row.reportGeneratedDate}"></td>
+        <td th:text="${row.totalBorrower}"></td>
+        <td th:text="${row.addressSegment}"></td>
+        <td th:text="${row.totalRelatedParty}"></td>
+        <td th:text="${row.totalCreditFacility}"></td>
+        <td th:text="${row.totalGuarantor}"></td>
+        <td th:text="${row.totalRecordCount}"></td>
+    </tr>
+
+    <!-- TOTAL ROW -->
+    <tr th:if="${!#lists.isEmpty(reportList)}"
+        style="font-weight:bold; background-color:#1967AD; color:#ffffff;">
+        <td>Total</td>
+        <td th:text="${totalBorrower}"></td>
+        <td th:text="${totalAddress}"></td>
+        <td th:text="${totalRelatedParty}"></td>
+        <td th:text="${totalCreditFacility}"></td>
+        <td th:text="${totalGuarantor}"></td>
+        <td th:text="${totalRecords}"></td>
+    </tr>
+
+
+    <!-- No data -->
+    <tr th:if="${#lists.isEmpty(reportList)}">
+        <td colspan="4" style="text-align:center;">
+            No data available for selected month
+        </td>
+    </tr>
+
+</table>
+
+<!-- Include the latest html2canvas library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<!-- Include the latest jsPDF library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+    window.onload = function() {
+     // Define constants
+     const DOWNLOAD_BUTTON_ID = 'Download-Link';
+     const GO_BACK_BUTTON_ID = 'Go-Back-Link';
+     const PDF_FORMAT = 'PNG'; // Format used for image in PDF
+     const IMAGE_TYPE = 'image/jpeg'; // MIME type for the image
+     const PDF_IMAGE_QUALITY = 0.6; // Image quality for the PDF
+     const SCREENSHOT_SCALE = 2; // Higher resolution for screenshot
+     const TIMEOUT_DURATION = 1000; // Timeout duration to show button again in milliseconds
+
+     // Event listener for the Download button
+     document.getElementById(DOWNLOAD_BUTTON_ID).addEventListener('click', function() {
+         // Hide the buttons before taking the screenshot
+         document.getElementById(DOWNLOAD_BUTTON_ID).style.visibility = 'hidden';
+         document.getElementById(GO_BACK_BUTTON_ID).style.visibility = 'hidden';
+
+         // Get the current date and time
+         const currentDate = new Date();
+         const day = currentDate.getDate();
+         const month = currentDate.getMonth() + 1;
+         const year = currentDate.getFullYear();
+         const hours = currentDate.getHours();
+         const minutes = currentDate.getMinutes();
+         const seconds = currentDate.getSeconds();
+
+         // Format date and time
+         const formattedDate = `${day}-${month}-${year}`;
+         const formattedTime = `${hours}-${minutes}-${seconds}`;
+
+         // Take a screenshot of the webpage with higher resolution
+         html2canvas(document.body, { scale: SCREENSHOT_SCALE }).then(function(canvas) {
+             // Convert the screenshot to an image data URL
+             const screenshot = canvas.toDataURL(IMAGE_TYPE, PDF_IMAGE_QUALITY);
+
+             // Create a new jsPDF instance
+             const { jsPDF } = window.jspdf;
+             const pdf = new jsPDF('p', 'mm', 'a4');
+
+             // Calculate dimensions
+             const imgWidth = pdf.internal.pageSize.getWidth();
+             const pageHeight = pdf.internal.pageSize.getHeight();
+             const imgHeight = canvas.height * imgWidth / canvas.width;
+             let heightLeft = imgHeight;
+             let position = 0;
+
+             // If the image is higher than the PDF page, break into multiple pages
+             if (heightLeft > pageHeight) {
+                 while (heightLeft > 0) {
+                     pdf.addImage(screenshot, PDF_FORMAT, 0, position, imgWidth, imgHeight);
+                     heightLeft -= pageHeight;
+                     position -= pageHeight;
+                     if (heightLeft > 0) {
+                         pdf.addPage();
+                     }
+                 }
+             } else {
+                 pdf.addImage(screenshot, PDF_FORMAT, 0, 0, imgWidth, imgHeight);
+             }
+
+             // Save the PDF with the filename including date and time
+             pdf.save(`report_${formattedDate}_${formattedTime}.pdf`);
+
+             // Show the buttons again after 1 second
+             setTimeout(function() {
+                 document.getElementById(DOWNLOAD_BUTTON_ID).style.visibility = 'visible';
+                 document.getElementById(GO_BACK_BUTTON_ID).style.visibility = 'visible';
+             }, TIMEOUT_DURATION);
+         });
+     });
+
+     // Event listener for the Go Back button
+     document.getElementById(GO_BACK_BUTTON_ID).addEventListener('click', function() {
+         // Redirect to home page when Go Back button is clicked
+         window.location.href = "generate_files"; // Replace "select-report" with the URL of your home page
+     });
+ };
+</script>
+</script>
+
+
+</body>
+</html>
